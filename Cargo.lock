@@ -290,7 +290,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-changelog"
-version = "0.0.0-a.0"
+version = "0.0.0-a.0+ci.0"
 dependencies = [
  "anyhow",
  "chrono",
