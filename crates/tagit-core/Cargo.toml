@@ -1,6 +1,6 @@
 [package]
 name = "tagit-core"
-version = "0.0.0-a.0"
+version = "0.3.0"
 description = "core functionality of tagit"
 authors.workspace = true
 edition.workspace = true
