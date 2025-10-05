@@ -1,0 +1,25 @@
+name: Publish
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+*"
+      - "*/[0-9]+.[0-9]+.[0-9]+*"
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          lfs: true
+      - name: install rust
+        uses: dtolnay/rust-toolchain@stable
+      - run: echo ok
+      - name: publish
+        run: cargo run --package xtask
+        env:
+          INPUT_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+      - run: bin/release
+        env:
+          INPUT_TOKEN: ${{ secrets.PUSH_TOKEN }}

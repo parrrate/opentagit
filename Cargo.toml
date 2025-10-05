@@ -1,0 +1,37 @@
+[workspace]
+members = ["crates/tagit-changelog", "crates/tagit-core", "xtask"]
+
+[workspace.package]
+authors = ["Alisa Feistel <alisafeistel@gmail.com>"]
+edition = "2024"
+license = "MIT OR Apache-2.0"
+publish = true
+repository = "https://github.com/parrrate/opentagit"
+rust-version = "1.90"
+
+[workspace.dependencies]
+tagit-changelog = { version = "0.0.0-a.0", path = "crates/tagit-changelog" }
+tagit-core = { version = "0.0.0-a.0", path = "crates/tagit-core" }
+
+anyhow = "1.0.100"
+chrono = "0.4.42"
+markdown = "1.0.0"
+mdast_util_to_markdown = "0.0.2"
+owo-colors = "4.2.3"
+semver = "1.0.23"
+static_assertions = "1.1.0"
+strum = { version = "0.27.2", features = ["derive"] }
+
+[package]
+name = "tagit"
+version = "0.0.0-a.0"
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+tagit-changelog.workspace = true
+tagit-core.workspace = true

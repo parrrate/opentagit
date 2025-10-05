@@ -1,0 +1,20 @@
+[package]
+name = "tagit-changelog"
+version = "0.0.0-a.0"
+documentation = "changelog parsing/rearrangement functionality of tagit"
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+tagit-core.workspace = true
+
+anyhow.workspace = true
+chrono.workspace = true
+markdown.workspace = true
+mdast_util_to_markdown.workspace = true
+semver.workspace = true
+strum.workspace = true
