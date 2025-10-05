@@ -24,7 +24,8 @@ strum = { version = "0.27.2", features = ["derive"] }
 
 [package]
 name = "tagit"
-version = "0.0.0-a.0"
+version = "0.0.0-a.0+ci.0"
+description = "collection of utilities used by tagit CLI tool internally"
 authors.workspace = true
 edition.workspace = true
 license.workspace = true
