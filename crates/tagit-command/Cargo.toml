@@ -1,0 +1,15 @@
+[package]
+name = "tagit-command"
+version = "0.1.0"
+description = "CLI arguments for `tagit`"
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+tagit-sub-command.workspace = true
+
+clap.workspace = true
