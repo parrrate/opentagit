@@ -1,6 +1,7 @@
 [workspace]
 members = [
     "crates/tagit-cfg",
+    "crates/tagit-cfg-cargo",
     "crates/tagit-changelog",
     "crates/tagit-core",
     "xtask",
@@ -15,10 +16,13 @@ repository = "https://github.com/parrrate/opentagit"
 rust-version = "1.90"
 
 [workspace.dependencies]
+tagit-cfg = { version = "0.1.0", path = "crates/tagit-cfg" }
+tagit-cfg-cargo = { version = "0.1.0", path = "crates/tagit-cfg-cargo" }
 tagit-changelog = { version = "0.0.0-a.0", path = "crates/tagit-changelog" }
 tagit-core = { version = "0.3.0", path = "crates/tagit-core" }
 
 anyhow = "1.0.100"
+cargo = { version = "0.91.0" }
 chrono = "0.4.42"
 markdown = "1.0.0"
 mdast_util_to_markdown = "0.0.2"
@@ -27,6 +31,7 @@ semver = "1.0.23"
 serde = { version = "1.0.228", features = ["derive"] }
 static_assertions = "1.1.0"
 strum = { version = "0.27.2", features = ["derive"] }
+toml = "0.9.7"
 
 [package]
 name = "tagit"
