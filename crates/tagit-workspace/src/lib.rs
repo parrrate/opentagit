@@ -13,6 +13,14 @@ use tagit_cfg::TagitCfg;
 use tagit_core::out;
 use tagit_sub_core::TAGIT_DIR;
 
+pub fn with_workspace_entries(
+    dry_run: bool,
+    check_committed: bool,
+    mut f: impl FnMut(WorkspaceEntry<'_>) -> anyhow::Result<()>,
+) -> anyhow::Result<()> {
+    with_workspaces(|workspace| with_workspace(workspace, dry_run, check_committed, &mut f))
+}
+
 pub fn with_workspace(
     workspace: &dyn TagitWorkspace,
     dry_run: bool,

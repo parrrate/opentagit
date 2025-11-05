@@ -25,9 +25,9 @@ tagit-cfg-cargo = { version = "0.1.0", path = "crates/tagit-cfg-cargo" }
 tagit-changelog = { version = "0.0.0-a.0", path = "crates/tagit-changelog" }
 tagit-core = { version = "0.3.0", path = "crates/tagit-core" }
 tagit-sub-core = { version = "0.1.0", path = "crates/tagit-sub-core" }
-tagit-workspace = { version = "0.1.3", path = "crates/tagit-workspace" }
+tagit-workspace = { version = "0.1.4", path = "crates/tagit-workspace" }
 tagit-workspace-cargo = { version = "0.1.1", path = "crates/tagit-workspace-cargo" }
-tagit-workspace-changelog = { version = "0.1.0", path = "crates/tagit-workspace-changelog" }
+tagit-workspace-changelog = { version = "0.1.1", path = "crates/tagit-workspace-changelog" }
 
 anyhow = "1.0.100"
 cargo = { version = "0.91.0" }
