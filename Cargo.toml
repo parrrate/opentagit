@@ -33,6 +33,7 @@ semver = "1.0.23"
 serde = { version = "1.0.228", features = ["derive"] }
 static_assertions = "1.1.0"
 strum = { version = "0.27.2", features = ["derive"] }
+thiserror = "2.0.17"
 toml = "0.9.7"
 
 [package]
