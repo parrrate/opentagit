@@ -1,5 +1,10 @@
 [workspace]
-members = ["crates/tagit-changelog", "crates/tagit-core", "xtask"]
+members = [
+    "crates/tagit-cfg",
+    "crates/tagit-changelog",
+    "crates/tagit-core",
+    "xtask",
+]
 
 [workspace.package]
 authors = ["Alisa Feistel <alisafeistel@gmail.com>"]
@@ -19,6 +24,7 @@ markdown = "1.0.0"
 mdast_util_to_markdown = "0.0.2"
 owo-colors = "4.2.3"
 semver = "1.0.23"
+serde = { version = "1.0.228", features = ["derive"] }
 static_assertions = "1.1.0"
 strum = { version = "0.27.2", features = ["derive"] }
 
