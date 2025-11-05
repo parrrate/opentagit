@@ -3301,6 +3301,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "tagit-workspace-changelog"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "tagit-changelog",
+ "tagit-workspace",
+]
+
+[[package]]
 name = "tar"
 version = "0.4.44"
 source = "registry+https://github.com/rust-lang/crates.io-index"
