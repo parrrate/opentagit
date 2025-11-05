@@ -1,6 +1,6 @@
 [package]
 name = "tagit-workspace-cargo"
-version = "0.1.0"
+version = "0.1.1"
 description = "tagit-workspace implementation for cargo"
 authors.workspace = true
 edition.workspace = true
@@ -12,6 +12,7 @@ rust-version.workspace = true
 [dependencies]
 tagit-cfg.workspace = true
 tagit-cfg-cargo.workspace = true
+tagit-core.workspace = true
 tagit-workspace.workspace = true
 
 anyhow.workspace = true

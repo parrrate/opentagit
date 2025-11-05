@@ -15,3 +15,10 @@ pub trait TagitWorkspace {
     fn members(&self) -> Vec<&dyn TagitPackage>;
     fn root_manifest(&self) -> &Path;
 }
+
+pub trait WorkspaceProvider {
+    fn with_workspace(
+        &self,
+        f: impl FnMut(&dyn TagitWorkspace) -> anyhow::Result<()>,
+    ) -> anyhow::Result<()>;
+}

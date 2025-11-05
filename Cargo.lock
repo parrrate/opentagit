@@ -3267,7 +3267,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "semver",
@@ -3276,13 +3276,14 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace-cargo"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "cargo",
  "semver",
  "tagit-cfg",
  "tagit-cfg-cargo",
+ "tagit-core",
  "tagit-workspace",
 ]
 

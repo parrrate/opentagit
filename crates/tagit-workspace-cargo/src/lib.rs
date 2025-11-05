@@ -1,10 +1,14 @@
 use std::{fmt::Display, path::Path};
 
 use anyhow::Context;
-use cargo::core::{Package, Workspace};
+use cargo::{
+    GlobalContext,
+    core::{Package, Workspace},
+};
 use semver::Version;
 use tagit_cfg::TagitCfg;
-use tagit_workspace::{TagitPackage, TagitWorkspace};
+use tagit_core::{Tagit, out};
+use tagit_workspace::{TagitPackage, TagitWorkspace, WorkspaceProvider};
 
 struct CargoPackage<'a>(&'a Package);
 
@@ -53,5 +57,23 @@ impl TagitWorkspace for CargoWorkspace<'_, '_> {
 
     fn root_manifest(&self) -> &Path {
         self.0.root_manifest()
+    }
+}
+
+pub struct CargoProvider;
+
+impl WorkspaceProvider for CargoProvider {
+    fn with_workspace(
+        &self,
+        mut f: impl FnMut(&dyn TagitWorkspace) -> anyhow::Result<()>,
+    ) -> anyhow::Result<()> {
+        let ctx = &GlobalContext::default()?;
+        out!("found cargo", "{}", ctx.cargo_exe()?.display());
+        let root = Tagit::root()?;
+        out!("found root", "{}", root.display());
+        let root = Tagit::root()?;
+        let workspace = Workspace::new(&root.join("Cargo.toml"), ctx)?;
+        out!("found workspace", "{}", workspace.root().display());
+        f(&CargoWorkspace::new(&workspace))
     }
 }
