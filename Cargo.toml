@@ -31,7 +31,7 @@ tagit-sub-command = { version = "0.1.0", path = "crates/tagit-sub-command" }
 tagit-sub-core = { version = "0.1.0", path = "crates/tagit-sub-core" }
 tagit-sub-impl = { version = "0.1.0", path = "crates/tagit-sub-impl" }
 tagit-workspace = { version = "0.1.4", path = "crates/tagit-workspace" }
-tagit-workspace-cargo = { version = "0.1.1", path = "crates/tagit-workspace-cargo" }
+tagit-workspace-cargo = { version = "0.1.2", path = "crates/tagit-workspace-cargo" }
 tagit-workspace-changelog = { version = "0.1.2", path = "crates/tagit-workspace-changelog" }
 
 anyhow = "1.0.100"

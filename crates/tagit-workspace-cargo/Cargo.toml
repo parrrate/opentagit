@@ -1,6 +1,6 @@
 [package]
 name = "tagit-workspace-cargo"
-version = "0.1.1"
+version = "0.1.2"
 description = "tagit-workspace implementation for cargo"
 authors.workspace = true
 edition.workspace = true
@@ -16,5 +16,9 @@ tagit-core.workspace = true
 tagit-workspace.workspace = true
 
 anyhow.workspace = true
+blake3 = { version = "1.6.0", features = ["pure"], optional = true }
 cargo.workspace = true
 semver.workspace = true
+
+[features]
+static = ["dep:blake3", "cargo/all-static"]
