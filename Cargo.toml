@@ -4,6 +4,7 @@ members = [
     "crates/tagit-cfg-cargo",
     "crates/tagit-changelog",
     "crates/tagit-core",
+    "crates/tagit-sub-command",
     "crates/tagit-sub-core",
     "crates/tagit-tag",
     "crates/tagit-workspace",
@@ -25,6 +26,7 @@ tagit-cfg = { version = "0.1.0", path = "crates/tagit-cfg" }
 tagit-cfg-cargo = { version = "0.1.0", path = "crates/tagit-cfg-cargo" }
 tagit-changelog = { version = "0.1.0", path = "crates/tagit-changelog" }
 tagit-core = { version = "0.3.2", path = "crates/tagit-core" }
+tagit-sub-command = { version = "0.1.0", path = "crates/tagit-sub-command" }
 tagit-sub-core = { version = "0.1.0", path = "crates/tagit-sub-core" }
 tagit-workspace = { version = "0.1.4", path = "crates/tagit-workspace" }
 tagit-workspace-cargo = { version = "0.1.1", path = "crates/tagit-workspace-cargo" }
@@ -33,6 +35,7 @@ tagit-workspace-changelog = { version = "0.1.2", path = "crates/tagit-workspace-
 anyhow = "1.0.100"
 cargo = { version = "0.91.0" }
 chrono = "0.4.42"
+clap = { version = "4.5.9", features = ["derive"] }
 inventory = "0.3.21"
 markdown = "1.0.0"
 mdast_util_to_markdown = "0.0.2"
