@@ -30,6 +30,7 @@ tagit-workspace-cargo = { version = "0.1.1", path = "crates/tagit-workspace-carg
 anyhow = "1.0.100"
 cargo = { version = "0.91.0" }
 chrono = "0.4.42"
+inventory = "0.3.21"
 markdown = "1.0.0"
 mdast_util_to_markdown = "0.0.2"
 owo-colors = "4.2.3"

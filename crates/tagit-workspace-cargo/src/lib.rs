@@ -8,7 +8,7 @@ use cargo::{
 use semver::Version;
 use tagit_cfg::TagitCfg;
 use tagit_core::{Tagit, out};
-use tagit_workspace::{TagitPackage, TagitWorkspace, WorkspaceProvider};
+use tagit_workspace::{TagitPackage, TagitWorkspace, TagitWorkspaceProvider};
 
 struct CargoPackage<'a>(&'a Package);
 
@@ -60,12 +60,13 @@ impl TagitWorkspace for CargoWorkspace<'_, '_> {
     }
 }
 
+#[derive(Debug)]
 pub struct CargoProvider;
 
-impl WorkspaceProvider for CargoProvider {
+impl TagitWorkspaceProvider for CargoProvider {
     fn with_workspace(
         &self,
-        mut f: impl FnMut(&dyn TagitWorkspace) -> anyhow::Result<()>,
+        f: &mut dyn FnMut(&dyn TagitWorkspace) -> anyhow::Result<()>,
     ) -> anyhow::Result<()> {
         let ctx = &GlobalContext::default()?;
         out!("found cargo", "{}", ctx.cargo_exe()?.display());
@@ -77,3 +78,5 @@ impl WorkspaceProvider for CargoProvider {
         f(&CargoWorkspace::new(&workspace))
     }
 }
+
+tagit_workspace::submit!(CargoProvider);

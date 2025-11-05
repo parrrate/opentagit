@@ -13,4 +13,5 @@ rust-version.workspace = true
 tagit-cfg.workspace = true
 
 anyhow.workspace = true
+inventory.workspace = true
 semver.workspace = true
