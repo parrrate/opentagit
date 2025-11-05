@@ -72,7 +72,12 @@ impl TagitWorkspaceProvider for CargoProvider {
         out!("found cargo", "{}", ctx.cargo_exe()?.display());
         let root = Tagit::root()?;
         out!("found root", "{}", root.display());
-        let workspace = Workspace::new(&root.join("Cargo.toml"), ctx)?;
+        let path = root.join("Cargo.toml");
+        if !path.exists() {
+            out!("doesn't exist", "{}", path.display());
+            return Ok(());
+        }
+        let workspace = Workspace::new(&path, ctx)?;
         out!("found workspace", "{}", workspace.root().display());
         f(&CargoWorkspace::new(&workspace))
     }
