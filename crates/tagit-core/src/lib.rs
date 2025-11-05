@@ -1,5 +1,6 @@
 use std::{
     ffi::OsString,
+    path::PathBuf,
     process::{Command, ExitStatus, Stdio},
 };
 
@@ -303,5 +304,14 @@ impl Tagit {
     ) -> anyhow::Result<()> {
         let current = &format!("{tag_prefix}{version}");
         self.retag_current(version, tag_prefix, msg, dry_run, current)
+    }
+
+    pub fn root() -> anyhow::Result<PathBuf> {
+        let output = Command::new("git")
+            .arg("rev-parse")
+            .arg("--show-toplevel")
+            .output()?;
+        output.status.okie()?;
+        Ok(String::from_utf8(output.stdout)?.trim().into())
     }
 }

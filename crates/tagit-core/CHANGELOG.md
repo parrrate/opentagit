@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+## [0.3.1] — 2025-11-05
+
+### Added
+
+- `Tagit::root`
+
 ## [0.3.0] — 2025-09-19
 
 ### Changed
@@ -22,7 +28,8 @@
 
 (base version)
 
-[unreleased]: https://github.com/parrrate/opentagit/compare/tagit-core/0.3.0...HEAD
+[unreleased]: https://github.com/parrrate/opentagit/compare/tagit-core/0.3.1...HEAD
+[0.3.1]: https://github.com/parrrate/opentagit/compare/tagit-core/0.3.0...tagit-core/0.3.1
 [0.3.0]: https://github.com/parrrate/opentagit/compare/tagit-core/0.2.7...tagit-core/0.3.0
 [0.2.7]: https://github.com/parrrate/opentagit/compare/tagit-core/0.2.6...tagit-core/0.2.7
 [0.2.6]: https://github.com/parrrate/opentagit/releases/tag/tagit-core/0.2.6
