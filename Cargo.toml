@@ -4,6 +4,7 @@ members = [
     "crates/tagit-cfg-cargo",
     "crates/tagit-changelog",
     "crates/tagit-core",
+    "crates/tagit-sub",
     "crates/tagit-sub-command",
     "crates/tagit-sub-core",
     "crates/tagit-sub-impl",
@@ -28,6 +29,7 @@ tagit-cfg-cargo = { version = "0.1.0", path = "crates/tagit-cfg-cargo" }
 tagit-changelog = { version = "0.1.0", path = "crates/tagit-changelog" }
 tagit-core = { version = "0.3.2", path = "crates/tagit-core" }
 tagit-sub-command = { version = "0.1.0", path = "crates/tagit-sub-command" }
+tagit-sub = { version = "0.1.0", path = "crates/tagit-sub" }
 tagit-sub-core = { version = "0.1.0", path = "crates/tagit-sub-core" }
 tagit-sub-impl = { version = "0.1.0", path = "crates/tagit-sub-impl" }
 tagit-workspace = { version = "0.1.4", path = "crates/tagit-workspace" }

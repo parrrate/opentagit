@@ -3332,6 +3332,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "tagit-sub"
+version = "0.1.0"
+dependencies = [
+ "tagit-sub-command",
+ "tagit-sub-impl",
+]
+
+[[package]]
 name = "tagit-sub-command"
 version = "0.1.0"
 dependencies = [
