@@ -34,6 +34,7 @@ fn full_path(path: impl AsRef<Path>) -> PathBuf {
     Path::new(TAGIT_SUB_DIR).join(path)
 }
 
+/// Path for a particular remote name.
 pub fn remote_to_path<'a>(remote: &'a str) -> Result<Option<&'a str>, MissingPath<'a>> {
     if let Some(path) = remote.strip_prefix("_tagit/_/") {
         if full_path(path).exists() {
