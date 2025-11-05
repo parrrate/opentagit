@@ -1,6 +1,6 @@
 [package]
 name = "tagit-workspace"
-version = "0.1.1"
+version = "0.1.2"
 description = "workspace abstraction for tagit"
 authors.workspace = true
 edition.workspace = true
@@ -11,7 +11,9 @@ rust-version.workspace = true
 
 [dependencies]
 tagit-cfg.workspace = true
+tagit-core.workspace = true
 
 anyhow.workspace = true
 inventory.workspace = true
+owo-colors.workspace = true
 semver.workspace = true

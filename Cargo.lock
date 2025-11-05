@@ -3276,12 +3276,14 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "anyhow",
  "inventory",
+ "owo-colors",
  "semver",
  "tagit-cfg",
+ "tagit-core",
 ]
 
 [[package]]
