@@ -314,4 +314,18 @@ impl Tagit {
         output.status.okie()?;
         Ok(String::from_utf8(output.stdout)?.trim().into())
     }
+
+    pub fn current_branch() -> anyhow::Result<String> {
+        let output = Command::new("git")
+            .arg("branch")
+            .arg("--show-current")
+            .output()?;
+        output.status.okie()?;
+        let stdout = String::from_utf8(output.stdout)?;
+        let stdout = stdout.trim();
+        if stdout.is_empty() {
+            bail!("not on a branch?")
+        }
+        Ok(stdout.to_string())
+    }
 }
