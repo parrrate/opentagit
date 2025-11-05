@@ -3245,7 +3245,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-changelog"
-version = "0.0.0-a.0+ci.0"
+version = "0.1.0"
 dependencies = [
  "anyhow",
  "chrono",
@@ -3272,6 +3272,16 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "thiserror",
+]
+
+[[package]]
+name = "tagit-tag"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "tagit-changelog",
+ "tagit-core",
+ "tagit-workspace",
 ]
 
 [[package]]
@@ -3302,7 +3312,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace-changelog"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "anyhow",
  "tagit-changelog",
