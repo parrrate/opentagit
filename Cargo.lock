@@ -3258,6 +3258,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "tagit-sub-core"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+]
+
+[[package]]
 name = "tar"
 version = "0.4.44"
 source = "registry+https://github.com/rust-lang/crates.io-index"

@@ -4,6 +4,7 @@ members = [
     "crates/tagit-cfg-cargo",
     "crates/tagit-changelog",
     "crates/tagit-core",
+    "crates/tagit-sub-core",
     "xtask",
 ]
 
@@ -20,6 +21,7 @@ tagit-cfg = { version = "0.1.0", path = "crates/tagit-cfg" }
 tagit-cfg-cargo = { version = "0.1.0", path = "crates/tagit-cfg-cargo" }
 tagit-changelog = { version = "0.0.0-a.0", path = "crates/tagit-changelog" }
 tagit-core = { version = "0.3.0", path = "crates/tagit-core" }
+tagit-sub-core = { version = "0.1.0", path = "crates/tagit-sub-core" }
 
 anyhow = "1.0.100"
 cargo = { version = "0.91.0" }
