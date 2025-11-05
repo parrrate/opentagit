@@ -11,6 +11,7 @@ use owo_colors::OwoColorize;
 use semver::Version;
 use tagit_cfg::TagitCfg;
 use tagit_core::out;
+use tagit_sub_core::TAGIT_DIR;
 
 pub fn with_workspace(
     workspace: &dyn TagitWorkspace,
@@ -23,7 +24,7 @@ pub fn with_workspace(
         let is_subtree = package
             .manifest_path()
             .components()
-            .any(|part| part.as_os_str().to_str() == Some(".tagit"));
+            .any(|part| part.as_os_str().to_str() == Some(TAGIT_DIR));
         if is_subtree {
             continue;
         }
