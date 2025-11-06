@@ -1,0 +1,20 @@
+[package]
+name = "tagit-workspace-npm"
+version = "0.1.0"
+description = "tagit-workspace implementation for npm"
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+tagit-cfg.workspace = true
+tagit-core.workspace = true
+tagit-workspace.workspace = true
+
+anyhow.workspace = true
+semver.workspace = true
+serde.workspace = true
+serde_json.workspace = true

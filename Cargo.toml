@@ -14,6 +14,7 @@ members = [
     "crates/tagit-workspace",
     "crates/tagit-workspace-cargo",
     "crates/tagit-workspace-changelog",
+    "crates/tagit-workspace-npm",
     "xtask",
 ]
 
@@ -51,6 +52,7 @@ mdast_util_to_markdown = "0.0.2"
 owo-colors = "4.2.3"
 semver = "1.0.23"
 serde = { version = "1.0.228", features = ["derive"] }
+serde_json = { version = "1.0.145", features = ["preserve_order"] }
 static_assertions = "1.1.0"
 strum = { version = "0.27.2", features = ["derive"] }
 thiserror = "2.0.17"
