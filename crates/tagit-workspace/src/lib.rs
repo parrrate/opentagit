@@ -36,7 +36,9 @@ pub fn with_workspace(
         if is_subtree {
             continue;
         }
-        let TagitCfg { skip, skip_retag } = package.cfg()?;
+        let TagitCfg {
+            skip, skip_retag, ..
+        } = package.cfg()?;
         if skip {
             out!("skipping package", "{}", package.dimmed());
             continue;
