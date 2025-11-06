@@ -13,7 +13,9 @@ use tagit_workspace::{TagitPackage, TagitWorkspace, TagitWorkspaceProvider};
 struct PackageJson {
     name: String,
     version: Version,
+    #[serde(default)]
     tagit: TagitCfg,
+    #[serde(default)]
     workspaces: Vec<String>,
 }
 
