@@ -22,13 +22,18 @@ fn upstream_remote() -> anyhow::Result<String> {
 }
 
 /// Update tags based on workspace members' project manifests.
-pub fn tag(dry_run: bool, no_retag: bool, total_order: bool) -> anyhow::Result<()> {
+pub fn tag(
+    tagit_package: &'static str,
+    tagit_version: &'static str,
+    dry_run: bool,
+    no_retag: bool,
+    total_order: bool,
+) -> anyhow::Result<()> {
     let branch = Tagit::current_branch()?;
     out!("found branch", "{branch}");
     let remote = upstream_remote()?;
     out!("found remote", "{remote}");
-    let tagit = Tagit::new(&remote, env!("CARGO_PKG_NAME"), env!("CARGO_PKG_VERSION"))?
-        .with_total_order(total_order);
+    let tagit = Tagit::new(&remote, tagit_package, tagit_version)?.with_total_order(total_order);
     with_workspace_entries(
         dry_run,
         true,
