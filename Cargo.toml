@@ -26,7 +26,7 @@ repository = "https://github.com/parrrate/opentagit"
 rust-version = "1.90"
 
 [workspace.dependencies]
-tagit-cfg = { version = "0.1.0", path = "crates/tagit-cfg" }
+tagit-cfg = { version = "0.1.1", path = "crates/tagit-cfg" }
 tagit-cfg-cargo = { version = "0.1.0", path = "crates/tagit-cfg-cargo" }
 tagit-changelog = { version = "0.1.0", path = "crates/tagit-changelog" }
 tagit-command = { version = "0.1.0", path = "crates/tagit-command" }
