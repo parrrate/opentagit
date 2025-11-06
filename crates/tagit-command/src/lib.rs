@@ -5,7 +5,7 @@ use tagit_sub_command::SubtreeCommand;
 
 /// Commands passed to `tagit` CLI.
 #[derive(Subcommand)]
-enum Command {
+pub enum Command {
     /// Automatically push tags for workspace packages
     ///
     /// For root package: X.Y.Z
