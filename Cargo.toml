@@ -33,7 +33,7 @@ tagit-cfg-cargo = { version = "0.2.0", path = "crates/tagit-cfg-cargo" }
 tagit-changelog = { version = "0.1.0", path = "crates/tagit-changelog" }
 tagit-command = { version = "0.1.0", path = "crates/tagit-command" }
 tagit-core = { version = "0.3.2", path = "crates/tagit-core" }
-tagit-impl = { version = "0.1.0", path = "crates/tagit-impl" }
+tagit-impl = { version = "0.1.1", path = "crates/tagit-impl" }
 tagit-sub = { version = "0.1.0", path = "crates/tagit-sub" }
 tagit-sub-command = { version = "0.1.0", path = "crates/tagit-sub-command" }
 tagit-sub-core = { version = "0.1.0", path = "crates/tagit-sub-core" }

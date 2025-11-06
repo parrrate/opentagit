@@ -1,6 +1,6 @@
 [package]
 name = "tagit-impl"
-version = "0.1.0"
+version = "0.1.1"
 description = "`tagit` CLI implementation"
 authors.workspace = true
 edition.workspace = true
@@ -19,7 +19,6 @@ anyhow.workspace = true
 clap.workspace = true
 clap_complete = "4.5.7"
 clap_mangen = "0.2.22"
-
 
 [features]
 default = []
