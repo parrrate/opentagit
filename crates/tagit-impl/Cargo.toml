@@ -1,6 +1,6 @@
 [package]
 name = "tagit-impl"
-version = "0.1.1"
+version = "0.1.2"
 description = "`tagit` CLI implementation"
 authors.workspace = true
 edition.workspace = true

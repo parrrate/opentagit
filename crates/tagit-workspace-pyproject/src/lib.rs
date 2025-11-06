@@ -84,6 +84,10 @@ impl TagitWorkspaceProvider for PyProvider {
         let root = Tagit::root()?;
         out!("found root", "{}", root.display());
         let path = root.join("pyproject.toml");
+        if !path.exists() {
+            out!("doesn't exist", "{}", path.display());
+            return Ok(());
+        }
         let PyProjectToml { inner, tool } = toml::from_str(&std::fs::read_to_string(&path)?)?;
         let project = inner.project.context("no [project]")?;
         let name = project.name;

@@ -123,6 +123,11 @@ impl TagitWorkspaceProvider for NpmProvider {
     ) -> anyhow::Result<()> {
         let root = Tagit::root()?;
         out!("found root", "{}", root.display());
+        let path = root.join("package.json");
+        if !path.exists() {
+            out!("doesn't exist", "{}", path.display());
+            return Ok(());
+        }
         f(&NpmWorkspace::from_root(root)?)
     }
 }
