@@ -9,6 +9,7 @@ use tagit_workspace::{TagitPackage, TagitWorkspace, TagitWorkspaceProvider};
 
 #[derive(Deserialize)]
 struct PyProjectToml {
+    #[serde(flatten)]
     inner: pyproject_toml::PyProjectToml,
     #[serde(default)]
     tool: Tool,
