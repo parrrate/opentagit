@@ -42,6 +42,7 @@ pub struct Tagit {
     package: &'static str,
     version: &'static str,
     total_order: bool,
+    sign: bool,
 }
 
 struct VersionIterator {
@@ -71,12 +72,12 @@ impl Iterator for VersionIterator {
     }
 }
 
-fn sign() -> &'static [&'static str] {
-    if std::env::var_os("CI").is_some() {
-        &[]
-    } else {
-        &["--sign"]
-    }
+fn sign_args(sign: bool) -> &'static [&'static str] {
+    if sign { &["--sign"] } else { &[] }
+}
+
+fn default_sign() -> bool {
+    std::env::var_os("CI").is_none()
 }
 
 impl Tagit {
@@ -86,6 +87,7 @@ impl Tagit {
             package,
             version,
             total_order: false,
+            sign: default_sign(),
         })
     }
 
@@ -94,6 +96,10 @@ impl Tagit {
             total_order,
             ..self
         }
+    }
+
+    pub fn with_sign(self, sign: bool) -> Self {
+        Self { sign, ..self }
     }
 
     pub fn date(ref_: &str) -> anyhow::Result<String> {
@@ -126,7 +132,7 @@ impl Tagit {
             )
             .arg("tag")
             .args(target.map(|_| "--force").as_slice())
-            .args(sign())
+            .args(sign_args(self.sign))
             .arg("--annotate")
             .args([
                 "--message",
