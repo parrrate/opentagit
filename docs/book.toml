@@ -1,0 +1,18 @@
+[book]
+authors = ["Alisa Feistel"]
+language = "en"
+multilingual = false
+src = "src"
+title = "tagit"
+
+[rust]
+edition = "2024"
+
+[build]
+build-dir = "book"
+create-missing = false
+
+[output.html]
+default-theme = "navy"
+
+[preprocessor.alerts]
