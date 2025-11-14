@@ -1,0 +1,5 @@
+{
+    "no-empty-links": false,
+    "line-length": { "line_length": 99 },
+    "no-duplicate-heading": false
+}
