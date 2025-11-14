@@ -45,7 +45,11 @@ pub fn run(
             Ok(())
         }
         #[cfg(not(feature = "tag"))]
-        Command::Tag { .. } => anyhow::bail!("enable `tag` feature"),
+        Command::Tag { .. } => {
+            let _ = tagit_package;
+            let _ = tagit_version;
+            anyhow::bail!("enable `tag` feature")
+        }
         #[cfg(not(feature = "sub"))]
         Command::Sub { .. } => anyhow::bail!("enable `sub` feature"),
         #[cfg(not(feature = "changelog"))]

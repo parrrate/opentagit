@@ -44,6 +44,7 @@ pub fn tag(
         true,
         |WorkspaceEntry {
              version,
+             #[cfg(feature = "changelog")]
              root,
              name,
              tag_prefix,
@@ -52,7 +53,9 @@ pub fn tag(
          }| {
             let msg = format!("{name} {version}");
             let extended_msg = || {
-                let mut msg = msg.clone();
+                let msg = msg.clone();
+                #[cfg(feature = "changelog")]
+                let mut msg = msg;
                 #[cfg(feature = "changelog")]
                 if let Some(changelog) =
                     tagit_changelog::version_changelog(version.clone(), root, tag_prefix)?
