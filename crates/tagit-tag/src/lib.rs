@@ -28,12 +28,17 @@ pub fn tag(
     dry_run: bool,
     no_retag: bool,
     total_order: bool,
+    sign: Option<bool>,
 ) -> anyhow::Result<()> {
     let branch = Tagit::current_branch()?;
     out!("found branch", "{branch}");
     let remote = upstream_remote()?;
     out!("found remote", "{remote}");
-    let tagit = Tagit::new(&remote, tagit_package, tagit_version)?.with_total_order(total_order);
+    let mut tagit =
+        Tagit::new(&remote, tagit_package, tagit_version)?.with_total_order(total_order);
+    if let Some(sign) = sign {
+        tagit = tagit.with_sign(sign);
+    }
     with_workspace_entries(
         dry_run,
         true,

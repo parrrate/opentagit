@@ -20,6 +20,8 @@ pub enum Command {
         no_retag: bool,
         #[arg(long)]
         total_order: bool,
+        #[arg(long)]
+        sign: Option<bool>,
     },
     /// Manage subtrees in the .tagit/sub/ directory
     ///

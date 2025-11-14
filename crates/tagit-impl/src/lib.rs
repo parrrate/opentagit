@@ -17,7 +17,15 @@ pub fn run(
             dry_run,
             no_retag,
             total_order,
-        } => tagit_tag::tag(tagit_package, tagit_version, dry_run, no_retag, total_order),
+            sign,
+        } => tagit_tag::tag(
+            tagit_package,
+            tagit_version,
+            dry_run,
+            no_retag,
+            total_order,
+            sign,
+        ),
         #[cfg(feature = "sub")]
         Command::Sub { command } => tagit_sub::sub(command.unwrap_or_default()),
         #[cfg(feature = "changelog")]
