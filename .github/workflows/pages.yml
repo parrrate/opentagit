@@ -24,7 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - run: rustup update stable && rustup default stable
-      - uses: taiki-e/install-action@mdbook
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: mdbook@0.4
       - uses: taiki-e/install-action@mdbook-linkcheck
       - uses: taiki-e/install-action@mdbook-alerts
       - uses: actions/configure-pages@v5
