@@ -60,11 +60,7 @@ pub fn tag(
                 if let Some(changelog) =
                     tagit_changelog::version_changelog(version.clone(), root, tag_prefix)?
                 {
-                    let w = msg.len();
                     msg += "\n";
-                    msg += &msg.clone();
-                    msg += &"=".repeat(w);
-                    msg += "\n\n";
                     msg += &changelog;
                     msg += "\n---\n\n";
                     out!("message", "{}", msg);

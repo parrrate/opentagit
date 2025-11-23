@@ -1,6 +1,6 @@
 [package]
 name = "tagit-impl"
-version = "0.2.1"
+version = "0.2.2"
 description = "`tagit` CLI implementation"
 authors.workspace = true
 edition.workspace = true
@@ -22,6 +22,6 @@ clap_mangen = "0.2.22"
 
 [features]
 default = []
-changelog = ["dep:tagit-workspace-changelog"]
+changelog = ["dep:tagit-workspace-changelog", "tagit-tag?/changelog"]
 sub = ["dep:tagit-sub", "tagit-sub/impl"]
 tag = ["dep:tagit-tag"]

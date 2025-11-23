@@ -505,7 +505,7 @@ pub fn version_changelog(
                 return Ok(None);
             };
             let mut children = section.into_nodes();
-            children.remove(0);
+            children.retain(|node| !matches!(node, Node::Heading(Heading { depth: 2, .. })));
             for node in &mut children {
                 if let Node::Heading(Heading { depth, .. }) = node {
                     *depth -= 1;

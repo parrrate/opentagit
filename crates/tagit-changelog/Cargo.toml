@@ -1,6 +1,6 @@
 [package]
 name = "tagit-changelog"
-version = "0.1.0"
+version = "0.1.1"
 description = "changelog parsing/rearrangement functionality of tagit"
 authors.workspace = true
 edition.workspace = true
