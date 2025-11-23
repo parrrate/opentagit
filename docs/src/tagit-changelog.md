@@ -33,7 +33,7 @@ We use <https://keepachangelog.com/en/1.1.0/> as the basis.
 
 - (feature)
 
-## [1.0.1] — (date)
+## [1.0.1]
 
 ### Added
 
@@ -59,7 +59,7 @@ We use <https://keepachangelog.com/en/1.1.0/> as the basis.
 
 - (fix)
 
-## [1.0.0] — (date)
+## [1.0.0]
 
 (base version)
 
