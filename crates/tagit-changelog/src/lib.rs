@@ -246,6 +246,7 @@ impl Document {
         children: &mut Vec<Node>,
         version: Version,
         tag_prefix: &str,
+        always_rearrange: bool,
     ) -> anyhow::Result<Self> {
         let mut preface = Vec::new();
         let mut definitions = Vec::new();
@@ -374,7 +375,7 @@ impl Document {
         let prior_releases = sections
             .keys()
             .any(|v| matches!(v, MaybeVersion::Version(version) if version.pre.is_empty()));
-        let rearrange = !prior_releases || version.pre.is_empty();
+        let rearrange = !prior_releases || version.pre.is_empty() || always_rearrange;
         if rearrange {
             let latest: Version = definitions
                 .get(1)
@@ -477,6 +478,7 @@ fn with_package<T>(
     tag_prefix: &str,
     f: impl FnOnce(&mut Vec<Node>, Document, PathBuf) -> anyhow::Result<T>,
     on_missing: impl FnOnce() -> anyhow::Result<T>,
+    always_rearrange: bool,
 ) -> anyhow::Result<T> {
     version.build = BuildMetadata::EMPTY;
     let path = package_root.as_ref().join("CHANGELOG.md");
@@ -486,7 +488,7 @@ fn with_package<T>(
     let changelog = std::fs::read_to_string(&path).context("failed to read CHANGELOG.md")?;
     let mut ast = to_mdast(&changelog, &ParseOptions::gfm()).map_err(|e| anyhow::anyhow!("{e}"))?;
     let children = ast.children_mut().context("no children nodes")?;
-    let document = Document::from_children(children, version, tag_prefix)?;
+    let document = Document::from_children(children, version, tag_prefix, always_rearrange)?;
     f(children, document, path)
 }
 
@@ -524,6 +526,7 @@ pub fn version_changelog(
             .map(Some)
         },
         || Ok(None),
+        true,
     )
 }
 
@@ -571,6 +574,7 @@ pub fn bump_one_changelog(
             Ok(())
         },
         || Ok(()),
+        false,
     )?;
     Ok(())
 }
