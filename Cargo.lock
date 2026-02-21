@@ -3406,7 +3406,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-command"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "clap",
  "tagit-sub-command",
@@ -3434,13 +3434,14 @@ dependencies = [
 
 [[package]]
 name = "tagit-impl"
-version = "0.2.3"
+version = "0.3.0"
 dependencies = [
  "anyhow",
  "clap",
  "clap_complete",
  "clap_mangen",
  "tagit-command",
+ "tagit-diff",
  "tagit-sub",
  "tagit-tag",
  "tagit-workspace-changelog",

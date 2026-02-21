@@ -30,6 +30,8 @@ pub fn run(
         Command::Sub { command } => tagit_sub::sub(command.unwrap_or_default()),
         #[cfg(feature = "changelog")]
         Command::Changelog { dry_run } => tagit_workspace_changelog::bump_changelog(dry_run),
+        #[cfg(feature = "diff")]
+        Command::Diff => tagit_diff::diff(),
         Command::Completions => {
             generate(
                 Bash,
@@ -54,5 +56,7 @@ pub fn run(
         Command::Sub { .. } => anyhow::bail!("enable `sub` feature"),
         #[cfg(not(feature = "changelog"))]
         Command::Changelog { .. } => anyhow::bail!("enable `changelog` feature"),
+        #[cfg(not(feature = "diff"))]
+        Command::Diff => anyhow::bail!("enable `diff` feature"),
     }
 }

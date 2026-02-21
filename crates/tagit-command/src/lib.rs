@@ -34,6 +34,8 @@ pub enum Command {
         #[arg(long)]
         dry_run: bool,
     },
+    /// List packages whose sources differ from the declared version.
+    Diff,
     /// Bash completions
     ///
     /// tagit completions > /usr/share/bash-completion/completions/tagit
