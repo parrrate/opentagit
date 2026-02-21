@@ -42,7 +42,7 @@ tagit-sub-core = { version = "0.1.0", path = "crates/tagit-sub-core" }
 tagit-sub-impl = { version = "0.1.0", path = "crates/tagit-sub-impl" }
 tagit-tag = { version = "0.3.3", path = "crates/tagit-tag" }
 tagit-workspace = { version = "0.2.2", path = "crates/tagit-workspace" }
-tagit-workspace-cargo = { version = "0.2.1", path = "crates/tagit-workspace-cargo" }
+tagit-workspace-cargo = { version = "0.2.2", path = "crates/tagit-workspace-cargo" }
 tagit-workspace-changelog = { version = "0.1.4", path = "crates/tagit-workspace-changelog" }
 tagit-workspace-npm = { version = "0.2.0", path = "crates/tagit-workspace-npm" }
 tagit-workspace-pyproject = { version = "0.2.0", path = "crates/tagit-workspace-pyproject" }

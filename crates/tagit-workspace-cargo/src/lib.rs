@@ -53,6 +53,7 @@ impl TagitPackage for CargoPackage<'_> {
             .map(Path::to_owned)
             .collect::<BTreeSet<_>>()
             .into_iter()
+            .chain(std::iter::once(self.0.manifest_path().to_owned()))
             .collect())
     }
 }

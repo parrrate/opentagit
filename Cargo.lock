@@ -3506,7 +3506,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace-cargo"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "anyhow",
  "blake3",
