@@ -87,12 +87,14 @@ pub fn with_workspace(
         let version = package.version();
         let root = package.root();
         let tag_prefix = &tag_prefix;
+        let paths = &*package.paths()?;
         f(WorkspaceEntry {
             version,
             root,
             name,
             tag_prefix,
             skip_retag,
+            paths,
         })?;
     }
     if dry_run {
@@ -118,6 +120,7 @@ pub struct WorkspaceEntry<'a> {
     pub name: &'a str,
     pub tag_prefix: &'a str,
     pub skip_retag: bool,
+    pub paths: &'a [PathBuf],
 }
 
 pub trait TagitPackage: Display {
