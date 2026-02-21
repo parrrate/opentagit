@@ -3,7 +3,7 @@
 use std::{io::Write, process::Command};
 
 use owo_colors::OwoColorize;
-use tagit_core::out;
+use tagit_core::{Tagit, out};
 use tagit_workspace::{WorkspaceEntry, with_workspace_entries};
 
 /// List workspace members whose sources differ from the tag they declare.
@@ -20,6 +20,7 @@ pub fn diff() -> anyhow::Result<()> {
          }| {
             let tag = &*format!("{tag_prefix}{version}");
             let no_diff = paths.is_empty()
+                || !Tagit::exists(tag)?
                 || Command::new("git")
                     .arg("diff-index")
                     .arg("--quiet")
