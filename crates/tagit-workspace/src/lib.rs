@@ -1,6 +1,6 @@
 use std::{
     fmt::{Debug, Display},
-    path::Path,
+    path::{Path, PathBuf},
     process::{Command, Stdio},
 };
 
@@ -126,6 +126,9 @@ pub trait TagitPackage: Display {
     fn name(&self) -> &str;
     fn version(&self) -> &Version;
     fn root(&self) -> &Path;
+    fn paths(&self) -> anyhow::Result<Vec<PathBuf>> {
+        Ok(Vec::new())
+    }
 }
 
 pub trait TagitWorkspace {
