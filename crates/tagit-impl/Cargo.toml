@@ -10,10 +10,10 @@ repository.workspace = true
 rust-version.workspace = true
 
 [dependencies]
-tagit-workspace-changelog = { workspace = true, optional = true }
 tagit-command.workspace = true
 tagit-sub = { workspace = true, optional = true }
 tagit-tag = { workspace = true, optional = true }
+tagit-workspace-changelog = { workspace = true, optional = true }
 
 anyhow.workspace = true
 clap.workspace = true
