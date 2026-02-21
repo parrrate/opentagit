@@ -1,6 +1,6 @@
 //! Implementation for the `tagit diff` command.
 
-use std::process::Command;
+use std::{io::Write, process::Command};
 
 use owo_colors::OwoColorize;
 use tagit_core::out;
@@ -29,15 +29,16 @@ pub fn diff() -> anyhow::Result<()> {
                     .success();
             if !no_diff {
                 out!("differs", "{}", name.purple());
-                Command::new("git")
+                let stdout = Command::new("git")
                     .arg("--no-pager")
                     .arg("diff")
                     .arg("-U0")
-                    .arg("--cached")
                     .arg(tag)
                     .arg("--")
                     .args(paths)
-                    .output()?;
+                    .output()?
+                    .stdout;
+                std::io::stdout().write_all(&stdout)?;
             }
             Ok(())
         },
