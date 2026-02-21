@@ -5,4 +5,7 @@
   - [tagit changelog](./tagit-changelog.md)
   - [tagit sub]()
 - [Configuration]()
-- [Language Support]()
+- [Language Support](./lang.md)
+  - [Rust](./lang-rust.md)
+  - [Node.js]()
+  - [Python]()
