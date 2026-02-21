@@ -33,6 +33,7 @@ pub fn diff() -> anyhow::Result<()> {
                 let stdout = Command::new("git")
                     .arg("--no-pager")
                     .arg("diff")
+                    .arg("--color")
                     .arg("-U0")
                     .arg(tag)
                     .arg("--")
