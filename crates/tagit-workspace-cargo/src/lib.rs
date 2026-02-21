@@ -1,4 +1,8 @@
-use std::{fmt::Display, path::Path};
+use std::{
+    collections::BTreeSet,
+    fmt::Display,
+    path::{Path, PathBuf},
+};
 
 use anyhow::Context;
 use cargo::{
@@ -38,6 +42,18 @@ impl TagitPackage for CargoPackage<'_> {
 
     fn root(&self) -> &Path {
         self.0.root()
+    }
+
+    fn paths(&self) -> anyhow::Result<Vec<PathBuf>> {
+        Ok(self
+            .0
+            .targets()
+            .iter()
+            .filter_map(|target| target.src_path().path())
+            .map(Path::to_owned)
+            .collect::<BTreeSet<_>>()
+            .into_iter()
+            .collect())
     }
 }
 
