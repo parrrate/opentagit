@@ -3423,6 +3423,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "tagit-diff"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "owo-colors",
+ "tagit-core",
+ "tagit-workspace",
+]
+
+[[package]]
 name = "tagit-impl"
 version = "0.2.3"
 dependencies = [
