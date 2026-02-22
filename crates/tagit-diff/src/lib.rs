@@ -2,6 +2,7 @@
 
 use std::{io::Write, process::Command};
 
+use itertools::Itertools;
 use owo_colors::OwoColorize;
 use tagit_core::{Tagit, out};
 use tagit_workspace::{WorkspaceEntry, with_workspace_entries};
@@ -29,7 +30,13 @@ pub fn diff() -> anyhow::Result<()> {
                     .status()?
                     .success();
             if !no_diff {
-                out!("differs", "{}", name.purple());
+                out!(
+                    "differs",
+                    "{} ({}; some of {})",
+                    name.purple(),
+                    tag.dimmed(),
+                    paths.iter().map(|path| path.display()).join(" ").dimmed(),
+                );
                 let stdout = Command::new("git")
                     .arg("--no-pager")
                     .arg("diff")
