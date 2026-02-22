@@ -1,6 +1,6 @@
 [package]
 name = "tagit-cfg-cargo"
-version = "0.2.0"
+version = "0.2.1"
 description = "tagit config parsing for cargo"
 authors.workspace = true
 edition.workspace = true

@@ -26,11 +26,11 @@ edition = "2024"
 license = "MIT OR Apache-2.0"
 publish = true
 repository = "https://github.com/parrrate/opentagit"
-rust-version = "1.90"
+rust-version = "1.93.1"
 
 [workspace.dependencies]
 tagit-cfg = { version = "0.2.0", path = "crates/tagit-cfg" }
-tagit-cfg-cargo = { version = "0.2.0", path = "crates/tagit-cfg-cargo" }
+tagit-cfg-cargo = { version = "0.2.1", path = "crates/tagit-cfg-cargo" }
 tagit-changelog = { version = "0.1.2", path = "crates/tagit-changelog" }
 tagit-command = { version = "0.3.1", path = "crates/tagit-command" }
 tagit-core = { version = "0.3.3", path = "crates/tagit-core" }
@@ -42,13 +42,13 @@ tagit-sub-core = { version = "0.1.0", path = "crates/tagit-sub-core" }
 tagit-sub-impl = { version = "0.1.0", path = "crates/tagit-sub-impl" }
 tagit-tag = { version = "0.3.3", path = "crates/tagit-tag" }
 tagit-workspace = { version = "0.2.2", path = "crates/tagit-workspace" }
-tagit-workspace-cargo = { version = "0.2.2", path = "crates/tagit-workspace-cargo" }
+tagit-workspace-cargo = { version = "0.2.3", path = "crates/tagit-workspace-cargo" }
 tagit-workspace-changelog = { version = "0.1.4", path = "crates/tagit-workspace-changelog" }
 tagit-workspace-npm = { version = "0.2.0", path = "crates/tagit-workspace-npm" }
 tagit-workspace-pyproject = { version = "0.2.0", path = "crates/tagit-workspace-pyproject" }
 
 anyhow = "1.0.100"
-cargo = { version = "0.91.0" }
+cargo = { version = "0.94.0" }
 chrono = "0.4.42"
 clap = { version = "4.5.9", features = ["derive"] }
 inventory = "0.3.21"
