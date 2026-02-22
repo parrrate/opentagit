@@ -1,5 +1,4 @@
 use std::{
-    collections::BTreeSet,
     fmt::Display,
     path::{Path, PathBuf},
 };
@@ -41,18 +40,11 @@ impl TagitPackage for CargoPackage<'_> {
     }
 
     fn paths(&self) -> anyhow::Result<Vec<PathBuf>> {
-        Ok(self
-            .0
-            .targets
-            .iter()
-            .map(|target| target.src_path.as_std_path())
-            .map(Path::to_owned)
-            .collect::<BTreeSet<_>>()
-            .into_iter()
-            .chain(std::iter::once(
-                self.0.manifest_path.as_std_path().to_owned(),
-            ))
-            .collect())
+        let paths = vec![
+            self.1.join("src"),
+            self.0.manifest_path.as_std_path().to_owned(),
+        ];
+        Ok(paths)
     }
 }
 

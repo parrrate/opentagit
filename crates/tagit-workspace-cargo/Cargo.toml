@@ -1,6 +1,6 @@
 [package]
 name = "tagit-workspace-cargo"
-version = "0.3.0"
+version = "0.3.1"
 description = "tagit-workspace implementation for cargo"
 authors.workspace = true
 edition.workspace = true
