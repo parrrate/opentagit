@@ -1,6 +1,6 @@
 [package]
 name = "tagit-cfg-cargo"
-version = "0.2.1"
+version = "0.3.0"
 description = "tagit config parsing for cargo"
 authors.workspace = true
 edition.workspace = true
@@ -13,5 +13,5 @@ rust-version.workspace = true
 tagit-cfg.workspace = true
 
 anyhow.workspace = true
-cargo.workspace = true
-toml.workspace = true
+cargo_metadata.workspace = true
+serde_json.workspace = true
