@@ -16,6 +16,7 @@ use mdast_util_to_markdown::{IndentOptions, Options, to_markdown_with_options};
 use semver::{BuildMetadata, Version};
 use strum::EnumString;
 use tagit_core::Tagit;
+use tagit_infer_url::infer_url;
 
 const DATE_SEPARATOR: &str = "\u{2002}—\u{2002}";
 
@@ -195,13 +196,7 @@ impl Section {
             return Ok(());
         }
         let tag = &format!("{tag_prefix}{version}");
-        let date = if latest == version && !Tagit::exists(tag)? {
-            Utc::now()
-        } else {
-            DateTime::parse_from_rfc2822(Tagit::date(tag)?.trim())?.with_timezone(&Utc)
-        }
-        .format("%F")
-        .to_string();
+        let date = date(latest == version, tag)?;
         let value = format!("{DATE_SEPARATOR}{date}");
         self.date = Some(date);
         self.heading.children.push(Node::Text(Text {
@@ -210,6 +205,17 @@ impl Section {
         }));
         Ok(())
     }
+}
+
+fn date(is_latest: bool, tag: &str) -> anyhow::Result<String> {
+    let date = if is_latest && !Tagit::exists(tag)? {
+        Utc::now()
+    } else {
+        DateTime::parse_from_rfc2822(Tagit::date(tag)?.trim())?.with_timezone(&Utc)
+    }
+    .format("%F")
+    .to_string();
+    Ok(date)
 }
 
 enum State<'a> {
@@ -576,5 +582,37 @@ pub fn bump_one_changelog(
         || Ok(()),
         false,
     )?;
+    Ok(())
+}
+
+fn default_changelog(version: Version, tag_prefix: &str) -> anyhow::Result<String> {
+    let base = infer_url()?;
+    let date = date(true, &format!("{tag_prefix}{version}"))?;
+    Ok(format!(
+        r#"# Changelog
+
+## [Unreleased]
+
+## [{version}]{DATE_SEPARATOR}{date}
+
+(base version)
+
+[unreleased]: {base}/compare/{tag_prefix}{version}...HEAD
+[{version}]: {base}/releases/tag/{tag_prefix}{version}
+"#
+    ))
+}
+
+pub fn init_changelog(
+    version: Version,
+    package_root: impl AsRef<Path>,
+    tag_prefix: &str,
+) -> anyhow::Result<()> {
+    let path = package_root.as_ref().join("CHANGELOG.md");
+    if path.exists() {
+        return Ok(());
+    }
+    let contents = default_changelog(version, tag_prefix)?;
+    std::fs::write(path, contents)?;
     Ok(())
 }
