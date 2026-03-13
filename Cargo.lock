@@ -852,7 +852,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-core"
-version = "0.3.3"
+version = "0.3.4"
 dependencies = [
  "anyhow",
  "owo-colors",
@@ -922,7 +922,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-tag"
-version = "0.3.3"
+version = "0.3.4"
 dependencies = [
  "anyhow",
  "tagit-changelog",

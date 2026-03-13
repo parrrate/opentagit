@@ -1,6 +1,6 @@
 [package]
 name = "tagit-tag"
-version = "0.3.3"
+version = "0.3.4"
 description = "`tagit tag` implementation"
 authors.workspace = true
 edition.workspace = true

@@ -4,7 +4,7 @@ use std::{
     process::{Command, ExitStatus, Stdio},
 };
 
-use anyhow::bail;
+use anyhow::{Context, bail};
 #[doc(hidden)]
 pub use owo_colors;
 use owo_colors::OwoColorize;
@@ -333,5 +333,20 @@ impl Tagit {
             bail!("not on a branch?")
         }
         Ok(stdout.to_string())
+    }
+
+    pub fn upstream_remote() -> anyhow::Result<String> {
+        let output = Command::new("git")
+            .arg("rev-parse")
+            .arg("--abbrev-ref")
+            .arg("@{upstream}")
+            .output()?;
+        output.status.okie()?;
+        let stdout = String::from_utf8(output.stdout)?;
+        let (remote, _) = stdout
+            .trim()
+            .split_once('/')
+            .context("no `/` in upstream")?;
+        Ok(remote.into())
     }
 }

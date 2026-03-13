@@ -1,25 +1,7 @@
 //! Implementation for the `tagit tag` command.
 
-use std::process::Command;
-
-use anyhow::Context;
-use tagit_core::{Okie, Tagit, out};
+use tagit_core::{Tagit, out};
 use tagit_workspace::{WorkspaceEntry, with_workspace_entries};
-
-fn upstream_remote() -> anyhow::Result<String> {
-    let output = Command::new("git")
-        .arg("rev-parse")
-        .arg("--abbrev-ref")
-        .arg("@{upstream}")
-        .output()?;
-    output.status.okie()?;
-    let stdout = String::from_utf8(output.stdout)?;
-    let (remote, _) = stdout
-        .trim()
-        .split_once('/')
-        .context("no `/` in upstream")?;
-    Ok(remote.into())
-}
 
 /// Update tags based on workspace members' project manifests.
 pub fn tag(
@@ -32,7 +14,7 @@ pub fn tag(
 ) -> anyhow::Result<()> {
     let branch = Tagit::current_branch()?;
     out!("found branch", "{branch}");
-    let remote = upstream_remote()?;
+    let remote = Tagit::upstream_remote()?;
     out!("found remote", "{remote}");
     let mut tagit =
         Tagit::new(&remote, tagit_package, tagit_version)?.with_total_order(total_order);
