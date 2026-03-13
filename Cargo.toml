@@ -7,6 +7,7 @@ members = [
     "crates/tagit-core",
     "crates/tagit-diff",
     "crates/tagit-impl",
+    "crates/tagit-infer-url",
     "crates/tagit-sub",
     "crates/tagit-sub-command",
     "crates/tagit-sub-core",
@@ -36,6 +37,7 @@ tagit-command = { version = "0.3.1", path = "crates/tagit-command" }
 tagit-core = { version = "0.3.4", path = "crates/tagit-core" }
 tagit-diff = { version = "0.1.4", path = "crates/tagit-diff" }
 tagit-impl = { version = "0.3.4", path = "crates/tagit-impl" }
+tagit-infer-url = { version = "0.1.0", path = "crates/tagit-infer-url" }
 tagit-sub = { version = "0.1.0", path = "crates/tagit-sub" }
 tagit-sub-command = { version = "0.1.0", path = "crates/tagit-sub-command" }
 tagit-sub-core = { version = "0.1.0", path = "crates/tagit-sub-core" }
@@ -63,6 +65,7 @@ static_assertions = "1.1.0"
 strum = { version = "0.27.2", features = ["derive"] }
 thiserror = "2.0.17"
 toml = "0.9.7"
+url = "2.5.8"
 
 [package]
 name = "tagit"
