@@ -79,3 +79,6 @@ exclude = ["/.github", "/bin", "/.gitattribues", "/.gitignore", "/codegen.sh"]
 [dependencies]
 tagit-changelog.workspace = true
 tagit-core.workspace = true
+
+[package.metadata.tagit]
+skip = true
