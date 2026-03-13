@@ -1,6 +1,7 @@
 //! `clap` part of `tagit`.
 
 use clap::Subcommand;
+use tagit_changelog_command::ChangelogCommand;
 use tagit_sub_command::SubtreeCommand;
 
 /// Commands passed to `tagit` CLI.
@@ -33,6 +34,8 @@ pub enum Command {
     Changelog {
         #[arg(long)]
         dry_run: bool,
+        #[command(subcommand)]
+        command: Option<ChangelogCommand>,
     },
     /// List packages whose sources differ from the declared version
     Diff,

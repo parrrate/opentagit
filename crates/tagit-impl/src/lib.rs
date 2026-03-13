@@ -2,6 +2,8 @@
 
 use clap_complete::{generate, shells::Bash};
 use clap_mangen::generate_to;
+#[cfg(feature = "changelog")]
+use tagit_changelog_command::ChangelogCommand;
 use tagit_command::Command;
 
 /// Handle [`Command`].
@@ -29,7 +31,10 @@ pub fn run(
         #[cfg(feature = "sub")]
         Command::Sub { command } => tagit_sub::sub(command.unwrap_or_default()),
         #[cfg(feature = "changelog")]
-        Command::Changelog { dry_run } => tagit_workspace_changelog::bump_changelog(dry_run),
+        Command::Changelog { dry_run, command } => match command.unwrap_or_default() {
+            ChangelogCommand::Bump => tagit_workspace_changelog::bump_changelog(dry_run),
+            ChangelogCommand::Init => tagit_workspace_changelog::init_changelog(dry_run),
+        },
         #[cfg(feature = "diff")]
         Command::Diff => tagit_diff::diff(),
         Command::Completions => {

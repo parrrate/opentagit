@@ -1,6 +1,6 @@
 [package]
 name = "tagit-impl"
-version = "0.3.5"
+version = "0.4.0"
 description = "`tagit` CLI implementation"
 authors.workspace = true
 edition.workspace = true
@@ -10,6 +10,7 @@ repository.workspace = true
 rust-version.workspace = true
 
 [dependencies]
+tagit-changelog-command = { workspace = true, optional = true }
 tagit-command.workspace = true
 tagit-diff = { workspace = true, optional = true }
 tagit-sub = { workspace = true, optional = true }
@@ -23,7 +24,11 @@ clap_mangen = "0.2.22"
 
 [features]
 default = []
-changelog = ["dep:tagit-workspace-changelog", "tagit-tag?/changelog"]
+changelog = [
+    "dep:tagit-changelog-command",
+    "dep:tagit-workspace-changelog",
+    "tagit-tag?/changelog",
+]
 diff = ["dep:tagit-diff"]
 sub = ["dep:tagit-sub", "tagit-sub/impl"]
 tag = ["dep:tagit-tag"]
