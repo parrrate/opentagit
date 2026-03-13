@@ -27,6 +27,10 @@ pub fn infer_url() -> anyhow::Result<Url> {
         .ok()
         .context("failed to remove username")?;
     url.set_port(None).ok().context("failed to remove port")?;
+    if let Some(path) = url.path().strip_suffix("/") {
+        let path = &*path.to_owned();
+        url.set_path(path);
+    }
     if let Some(path) = url.path().strip_suffix(".git") {
         let path = &*path.to_owned();
         url.set_path(path);
