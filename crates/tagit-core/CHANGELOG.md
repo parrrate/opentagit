@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [0.3.4] — 2026-03-13
+
+### Added
+
+- `Tagit::upstream_remote`
+
 ## [0.3.3] — 2025-11-14
 
 ### Added
@@ -38,7 +44,8 @@
 
 (base version)
 
-[unreleased]: https://github.com/parrrate/opentagit/compare/tagit-core/0.3.3...HEAD
+[unreleased]: https://github.com/parrrate/opentagit/compare/tagit-core/0.3.4...HEAD
+[0.3.4]: https://github.com/parrrate/opentagit/compare/tagit-core/0.3.3...tagit-core/0.3.4
 [0.3.3]: https://github.com/parrrate/opentagit/compare/tagit-core/0.3.2...tagit-core/0.3.3
 [0.3.2]: https://github.com/parrrate/opentagit/compare/tagit-core/0.3.1...tagit-core/0.3.2
 [0.3.1]: https://github.com/parrrate/opentagit/compare/tagit-core/0.3.0...tagit-core/0.3.1
