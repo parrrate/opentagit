@@ -5,6 +5,7 @@ fn main() -> anyhow::Result<()> {
         "0.1.0".parse()?,
         "crates/tagit-changelog/examples",
         "tagit-infer-url/",
+        false,
     )?;
     Ok(())
 }

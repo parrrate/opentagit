@@ -607,12 +607,15 @@ pub fn init_changelog(
     version: Version,
     package_root: impl AsRef<Path>,
     tag_prefix: &str,
+    dry_run: bool,
 ) -> anyhow::Result<()> {
     let path = package_root.as_ref().join("CHANGELOG.md");
     if path.exists() {
         return Ok(());
     }
     let contents = default_changelog(version, tag_prefix)?;
-    std::fs::write(path, contents)?;
+    if !dry_run {
+        std::fs::write(path, contents)?;
+    }
     Ok(())
 }

@@ -16,3 +16,16 @@ pub fn bump_changelog(dry_run: bool) -> anyhow::Result<()> {
          }| bump_one_changelog(version.clone(), root, tag_prefix, dry_run),
     )
 }
+
+pub fn init_changelog(dry_run: bool) -> anyhow::Result<()> {
+    with_workspace_entries(
+        dry_run,
+        false,
+        |WorkspaceEntry {
+             version,
+             root,
+             tag_prefix,
+             ..
+         }| tagit_changelog::init_changelog(version.clone(), root, tag_prefix, dry_run),
+    )
+}
