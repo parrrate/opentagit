@@ -610,7 +610,9 @@ fn default_changelog(version: Version, tag_prefix: &str) -> anyhow::Result<Strin
     let base = infer_url()?;
     let date = date(true, &format!("{tag_prefix}{version}"))?;
     Ok(format!(
-        r#"# Changelog
+        r#"<!-- markdownlint-disable no-duplicate-heading -->
+
+# Changelog
 
 ## [Unreleased]
 
