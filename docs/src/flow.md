@@ -1,5 +1,10 @@
 # Example Workflow
 
+> [!IMPORTANT]
+> `tagit` currently uses only `1.2.3` tags for versions, not `v1.2.3`. This is highly unlikely to
+> change, except for maybe the major-only `v1` in addition to `1`, because of compatibility
+> (some tools misunderstand `1` as short hash)
+
 ## Init
 
 ```bash
