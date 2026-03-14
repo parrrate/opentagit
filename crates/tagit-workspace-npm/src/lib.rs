@@ -3,6 +3,7 @@ use std::{
     path::{Path, PathBuf},
 };
 
+use anyhow::Context;
 use semver::Version;
 use serde::Deserialize;
 use tagit_cfg::TagitCfg;
@@ -93,7 +94,24 @@ impl NpmWorkspace {
         let mut packages = root_package
             .workspaces
             .iter()
-            .map(|member| root_package.root.join(member))
+            .map(|glob| root_package.root.join(glob))
+            .map(|glob| {
+                Ok(glob
+                    .as_os_str()
+                    .to_str()
+                    .context("not utf-8 path")?
+                    .to_owned())
+            })
+            .collect::<anyhow::Result<Vec<_>>>()?
+            .into_iter()
+            .map(|glob| {
+                glob::glob(&glob)?
+                    .map(|r| Ok(r?))
+                    .collect::<anyhow::Result<Vec<_>>>()
+            })
+            .collect::<anyhow::Result<Vec<_>>>()?
+            .into_iter()
+            .flatten()
             .map(NpmPackage::from_root)
             .collect::<anyhow::Result<Vec<_>>>()?;
         let root_manifest = root_package.path.clone();
