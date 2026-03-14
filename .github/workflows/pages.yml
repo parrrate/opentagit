@@ -19,16 +19,13 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      MDBOOK_VERSION: 0.4.52
     steps:
       - uses: actions/checkout@v5
       - run: rustup update stable && rustup default stable
       - uses: taiki-e/install-action@v2
         with:
-          tool: mdbook@0.4
+          tool: mdbook@0.5
       - uses: taiki-e/install-action@mdbook-linkcheck
-      - uses: taiki-e/install-action@mdbook-alerts
       - uses: actions/configure-pages@v5
       - run: cd docs && mdbook build
       - uses: actions/upload-pages-artifact@v3
