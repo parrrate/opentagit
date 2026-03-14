@@ -67,6 +67,12 @@ impl<'a> CargoWorkspace<'a> {
                 package
                     .dependencies
                     .iter()
+                    .filter(|p| match p.kind {
+                        cargo_metadata::DependencyKind::Normal => true,
+                        cargo_metadata::DependencyKind::Build => true,
+                        cargo_metadata::DependencyKind::Development => false,
+                        _ => false,
+                    })
                     .map(|p| &p.name)
                     .filter(|name| names.contains(*name))
                     .cloned(),
