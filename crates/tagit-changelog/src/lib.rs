@@ -482,7 +482,7 @@ fn with_package<T>(
     mut version: Version,
     package_root: impl AsRef<Path>,
     tag_prefix: &str,
-    f: impl FnOnce(&mut Vec<Node>, Document, PathBuf) -> anyhow::Result<T>,
+    f: impl FnOnce(&mut Vec<Node>, Document, PathBuf, String) -> anyhow::Result<T>,
     on_missing: impl FnOnce() -> anyhow::Result<T>,
     always_rearrange: bool,
 ) -> anyhow::Result<T> {
@@ -495,7 +495,7 @@ fn with_package<T>(
     let mut ast = to_mdast(&changelog, &ParseOptions::gfm()).map_err(|e| anyhow::anyhow!("{e}"))?;
     let children = ast.children_mut().context("no children nodes")?;
     let document = Document::from_children(children, version, tag_prefix, always_rearrange)?;
-    f(children, document, path)
+    f(children, document, path, changelog)
 }
 
 pub fn version_changelog(
@@ -504,11 +504,32 @@ pub fn version_changelog(
     tag_prefix: &str,
 ) -> anyhow::Result<Option<String>> {
     version.build = BuildMetadata::EMPTY;
+    let changed = with_package(
+        version.clone(),
+        package_root.as_ref(),
+        tag_prefix,
+        |children, document, _, original| {
+            document.into_nodes(children, tag_prefix)?;
+            let changelog = to_string(
+                &Node::Root(Root {
+                    children: std::mem::take(children),
+                    position: None,
+                }),
+                options(),
+            )?;
+            Ok(changelog != original)
+        },
+        || Ok(false),
+        false,
+    )?;
+    if changed {
+        bail!("changelog is not rearranged");
+    }
     with_package(
         version.clone(),
         package_root,
         tag_prefix,
-        |_, Document { mut sections, .. }, _| {
+        |_, Document { mut sections, .. }, _, _| {
             let Some(section) = sections.remove(&MaybeVersion::Version(version)) else {
                 return Ok(None);
             };
@@ -565,7 +586,7 @@ pub fn bump_one_changelog(
         version,
         package_root,
         tag_prefix,
-        |children, document, path| {
+        |children, document, path, original| {
             document.into_nodes(children, tag_prefix)?;
             let changelog = to_string(
                 &Node::Root(Root {
@@ -574,7 +595,7 @@ pub fn bump_one_changelog(
                 }),
                 options(),
             )?;
-            if !dry_run {
+            if !dry_run && changelog != original {
                 std::fs::write(path, changelog).context("failed to write CHANGELOG.md")?;
             }
             Ok(())
