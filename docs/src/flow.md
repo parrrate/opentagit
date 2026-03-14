@@ -70,3 +70,6 @@ update tags
 ```bash
 tagit tag
 ```
+
+assuming you've set up CI with <https://codeberg.org/parrrate/forgejo-release>, the changelog will
+show up in the release
