@@ -1,6 +1,6 @@
 [package]
 name = "tagit-diff"
-version = "0.1.5"
+version = "0.2.0"
 description = "`tagit diff` implementation"
 authors.workspace = true
 edition.workspace = true

@@ -8,7 +8,7 @@ use tagit_core::{Tagit, out};
 use tagit_workspace::{WorkspaceEntry, with_workspace_entries};
 
 /// List workspace members whose sources differ from the tag they declare.
-pub fn diff() -> anyhow::Result<()> {
+pub fn diff(short: bool) -> anyhow::Result<()> {
     with_workspace_entries(
         false,
         false,
@@ -37,17 +37,19 @@ pub fn diff() -> anyhow::Result<()> {
                     tag.dimmed(),
                     paths.iter().map(|path| path.display()).join(" ").dimmed(),
                 );
-                let stdout = Command::new("git")
-                    .arg("--no-pager")
-                    .arg("diff")
-                    .arg("--color")
-                    .arg("-U0")
-                    .arg(tag)
-                    .arg("--")
-                    .args(paths)
-                    .output()?
-                    .stdout;
-                std::io::stdout().write_all(&stdout)?;
+                if !short {
+                    let stdout = Command::new("git")
+                        .arg("--no-pager")
+                        .arg("diff")
+                        .arg("--color")
+                        .arg("-U0")
+                        .arg(tag)
+                        .arg("--")
+                        .args(paths)
+                        .output()?
+                        .stdout;
+                    std::io::stdout().write_all(&stdout)?;
+                }
             }
             Ok(())
         },

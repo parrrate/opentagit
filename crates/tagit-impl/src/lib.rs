@@ -36,7 +36,7 @@ pub fn run(
             ChangelogCommand::Init => tagit_workspace_changelog::init_changelog(dry_run),
         },
         #[cfg(feature = "diff")]
-        Command::Diff => tagit_diff::diff(),
+        Command::Diff { short } => tagit_diff::diff(short),
         Command::Completions => {
             generate(
                 Bash,

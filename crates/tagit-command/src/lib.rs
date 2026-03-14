@@ -38,7 +38,10 @@ pub enum Command {
         command: Option<ChangelogCommand>,
     },
     /// List packages whose sources differ from the declared version
-    Diff,
+    Diff {
+        #[arg(short, long)]
+        short: bool,
+    },
     /// Bash completions
     ///
     /// tagit completions > /usr/share/bash-completion/completions/tagit
