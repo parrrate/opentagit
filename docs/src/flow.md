@@ -14,7 +14,7 @@ edit stuff
 vim src/somefile.rs
 ```
 
-mention that in the changelog
+mention that in the changelog within the `[Unreleased]` section
 
 ```bash
 vim CHANGELOG.md
