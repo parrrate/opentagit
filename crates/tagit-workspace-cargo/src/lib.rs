@@ -120,7 +120,6 @@ impl TagitWorkspaceProvider for CargoProvider {
         f: &mut dyn FnMut(&dyn TagitWorkspace) -> anyhow::Result<()>,
     ) -> anyhow::Result<()> {
         let root = Tagit::root()?;
-        out!("found root", "{}", root.display());
         let path = root.join("Cargo.toml");
         if !path.exists() {
             out!("doesn't exist", "{}", path.display());

@@ -980,7 +980,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace-cargo"
-version = "0.3.3"
+version = "0.3.4"
 dependencies = [
  "anyhow",
  "cargo_metadata",
@@ -1003,7 +1003,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace-npm"
-version = "0.1.2"
+version = "0.1.3"
 dependencies = [
  "anyhow",
  "semver",
@@ -1016,7 +1016,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace-pyproject"
-version = "0.1.2"
+version = "0.1.3"
 dependencies = [
  "anyhow",
  "pyproject-toml",

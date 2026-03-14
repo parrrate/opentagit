@@ -83,7 +83,6 @@ impl TagitWorkspaceProvider for PyProvider {
         f: &mut dyn FnMut(&dyn TagitWorkspace) -> anyhow::Result<()>,
     ) -> anyhow::Result<()> {
         let root = Tagit::root()?;
-        out!("found root", "{}", root.display());
         let path = root.join("pyproject.toml");
         if !path.exists() {
             out!("doesn't exist", "{}", path.display());
