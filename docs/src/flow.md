@@ -38,7 +38,7 @@ commit (or skip directly to the next section)
 ```bash
 git add src/somefile.rs CHANGELOG.md Cargo.toml Cargo.lock
 # or just git add .
-git commit -m "..."
+git commit -m "..." # write what changed instead of `...`
 ```
 
 ## Prepare release
@@ -61,7 +61,7 @@ commit
 ```bash
 git add CHANGELOG.md Cargo.toml Cargo.lock
 # or just git add .
-git commit -m "..."
+git commit -m "..." # instead of `...`, write either what changed or release version
 git push
 ```
 
