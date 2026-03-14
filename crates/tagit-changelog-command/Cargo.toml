@@ -1,6 +1,6 @@
 [package]
 name = "tagit-changelog-command"
-version = "0.1.0"
+version = "0.1.1"
 description = "CLI arguments for `tagit changelog`"
 authors.workspace = true
 edition.workspace = true

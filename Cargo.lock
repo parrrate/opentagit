@@ -861,7 +861,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-changelog-command"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "clap",
 ]
@@ -898,7 +898,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-impl"
-version = "0.4.3"
+version = "0.4.4"
 dependencies = [
  "anyhow",
  "clap",

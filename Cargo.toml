@@ -34,11 +34,11 @@ rust-version = "1.93.1"
 tagit-cfg = { version = "0.2.0", path = "crates/tagit-cfg" }
 tagit-cfg-cargo = { version = "0.3.0", path = "crates/tagit-cfg-cargo" }
 tagit-changelog = { version = "0.2.2", path = "crates/tagit-changelog" }
-tagit-changelog-command = { version = "0.1.0", path = "crates/tagit-changelog-command" }
+tagit-changelog-command = { version = "0.1.1", path = "crates/tagit-changelog-command" }
 tagit-command = { version = "0.4.0", path = "crates/tagit-command" }
 tagit-core = { version = "0.3.4", path = "crates/tagit-core" }
 tagit-diff = { version = "0.1.4", path = "crates/tagit-diff" }
-tagit-impl = { version = "0.4.3", path = "crates/tagit-impl" }
+tagit-impl = { version = "0.4.4", path = "crates/tagit-impl" }
 tagit-infer-url = { version = "0.1.1", path = "crates/tagit-infer-url" }
 tagit-sub = { version = "0.1.0", path = "crates/tagit-sub" }
 tagit-sub-command = { version = "0.1.0", path = "crates/tagit-sub-command" }
