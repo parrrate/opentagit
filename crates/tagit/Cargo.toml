@@ -1,0 +1,32 @@
+[package]
+name = "tagit"
+version = "0.1.67"
+description = "Utilities for multi-package repositories"
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+tagit-command.workspace = true
+tagit-impl.workspace = true
+tagit-workspace-cargo = { workspace = true, optional = true }
+tagit-workspace-npm = { workspace = true, optional = true }
+tagit-workspace-pyproject = { workspace = true, optional = true }
+
+anyhow.workspace = true
+clap.workspace = true
+
+[features]
+default = ["changelog", "diff", "sub", "tag"]
+changelog = ["workspaces", "tagit-impl/changelog"]
+diff = ["workspaces", "tagit-impl/diff"]
+sub = ["tagit-impl/sub"]
+tag = ["workspaces", "tagit-impl/tag"]
+workspaces = [
+    "dep:tagit-workspace-cargo",
+    "dep:tagit-workspace-npm",
+    "dep:tagit-workspace-pyproject",
+]

@@ -822,15 +822,20 @@ dependencies = [
 
 [[package]]
 name = "tagit"
-version = "0.0.0-a.1"
+version = "0.1.67"
 dependencies = [
- "tagit-changelog",
- "tagit-core",
+ "anyhow",
+ "clap",
+ "tagit-command",
+ "tagit-impl",
+ "tagit-workspace-cargo",
+ "tagit-workspace-npm",
+ "tagit-workspace-pyproject",
 ]
 
 [[package]]
 name = "tagit-cfg"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "serde",
 ]
