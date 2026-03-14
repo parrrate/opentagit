@@ -18,7 +18,8 @@ tagit changelog init
 
 ## Make changes
 
-> [!NOTE] `tagit` isn't used in this section, but it later uses the changes we make here.
+> [!NOTE]
+> `tagit` isn't used in this section, but it later uses the changes we make here.
 
 edit stuff
 
