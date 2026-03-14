@@ -5,6 +5,11 @@
 > change, except for maybe the major-only `v1` in addition to `1`, because of compatibility
 > (some tools misunderstand `1` as short hash)
 
+<!---->
+
+> [!IMPORTANT]
+> You need upstream remote set up to use anything with `tagit`.
+
 ## Init
 
 ```bash
