@@ -40,7 +40,6 @@ pub fn with_workspace(
             skip, skip_retag, ..
         } = package.cfg()?;
         if skip {
-            out!("skipping package", "{}", package.dimmed());
             continue;
         }
         out!("found package", "{package}");

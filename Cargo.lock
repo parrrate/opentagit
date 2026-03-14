@@ -887,7 +887,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-diff"
-version = "0.1.4"
+version = "0.1.5"
 dependencies = [
  "anyhow",
  "itertools 0.14.0",
@@ -898,7 +898,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-impl"
-version = "0.4.4"
+version = "0.4.5"
 dependencies = [
  "anyhow",
  "clap",
@@ -957,7 +957,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-tag"
-version = "0.3.7"
+version = "0.3.8"
 dependencies = [
  "anyhow",
  "tagit-changelog",
@@ -967,7 +967,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace"
-version = "0.2.2"
+version = "0.2.3"
 dependencies = [
  "anyhow",
  "inventory",
@@ -994,7 +994,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace-changelog"
-version = "0.1.5"
+version = "0.1.6"
 dependencies = [
  "anyhow",
  "tagit-changelog",
