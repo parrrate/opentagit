@@ -23,6 +23,7 @@ members = [
     "xtask",
 ]
 default-members = ["crates/tagit"]
+resolver = "3"
 
 [workspace.package]
 authors = ["Alisa Feistel <alisafeistel@gmail.com>"]
