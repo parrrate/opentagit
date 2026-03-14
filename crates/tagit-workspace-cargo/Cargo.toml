@@ -1,6 +1,6 @@
 [package]
 name = "tagit-workspace-cargo"
-version = "0.3.1"
+version = "0.3.2"
 description = "tagit-workspace implementation for cargo"
 authors.workspace = true
 edition.workspace = true
@@ -18,3 +18,4 @@ tagit-workspace.workspace = true
 anyhow.workspace = true
 cargo_metadata.workspace = true
 semver.workspace = true
+topo_sort.workspace = true

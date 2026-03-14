@@ -1,14 +1,16 @@
 use std::{
+    collections::{BTreeMap, BTreeSet},
     fmt::Display,
     path::{Path, PathBuf},
 };
 
-use anyhow::Context;
+use anyhow::{Context, bail};
 use cargo_metadata::{Metadata, MetadataCommand, Package};
 use semver::Version;
 use tagit_cfg::TagitCfg;
 use tagit_core::{Tagit, out};
 use tagit_workspace::{TagitPackage, TagitWorkspace, TagitWorkspaceProvider};
+use topo_sort::{SortResults, TopoSort};
 
 struct CargoPackage<'a>(&'a Package, &'a Path);
 
@@ -52,9 +54,31 @@ pub struct CargoWorkspace<'a>(Vec<CargoPackage<'a>>, &'a Path);
 
 impl<'a> CargoWorkspace<'a> {
     pub fn new(workspace: &'a Metadata, root_manifest: &'a Path) -> anyhow::Result<Self> {
-        let members = workspace
+        let mut packages: BTreeMap<String, &'a Package> = workspace
             .workspace_packages()
             .into_iter()
+            .map(|p| (p.name.to_string(), p))
+            .collect();
+        let names = packages.keys().cloned().collect::<BTreeSet<_>>();
+        let mut topo_sort = TopoSort::new();
+        for package in packages.values() {
+            topo_sort.insert(
+                package.name.to_string(),
+                package
+                    .dependencies
+                    .iter()
+                    .map(|p| &p.name)
+                    .filter(|name| names.contains(*name))
+                    .cloned(),
+            );
+        }
+        let sorted = match topo_sort.into_vec_nodes() {
+            SortResults::Full(sorted) => sorted,
+            SortResults::Partial(_) => bail!("dependency cycle?"),
+        };
+        let members = sorted
+            .into_iter()
+            .map(|name| packages.remove(&name).expect("invalid state"))
             .map(|package| {
                 Ok(CargoPackage(
                     package,
@@ -66,6 +90,7 @@ impl<'a> CargoWorkspace<'a> {
                 ))
             })
             .collect::<anyhow::Result<_>>()?;
+        assert!(packages.is_empty(), "invalid state");
         Ok(Self(members, root_manifest))
     }
 }
