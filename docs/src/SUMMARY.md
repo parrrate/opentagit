@@ -1,6 +1,7 @@
 # Summary
 
 - [Installation](./installation.md)
+- [Workflow](./flow.md)
 - [Commands](./commands.md)
   - [tagit tag](./tagit-tag.md)
   - [tagit changelog](./tagit-changelog.md)
