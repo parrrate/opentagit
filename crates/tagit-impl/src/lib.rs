@@ -62,6 +62,6 @@ pub fn run(
         #[cfg(not(feature = "changelog"))]
         Command::Changelog { .. } => anyhow::bail!("enable `changelog` feature"),
         #[cfg(not(feature = "diff"))]
-        Command::Diff => anyhow::bail!("enable `diff` feature"),
+        Command::Diff { .. } => anyhow::bail!("enable `diff` feature"),
     }
 }
