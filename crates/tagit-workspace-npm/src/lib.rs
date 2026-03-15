@@ -25,7 +25,7 @@ enum Workspaces {
 #[derive(Deserialize)]
 struct PackageJson {
     name: String,
-    version: Version,
+    version: Option<Version>,
     #[serde(default)]
     tagit: TagitCfg,
     #[serde(default)]
@@ -54,7 +54,7 @@ impl Display for NpmPackage {
 }
 
 impl NpmPackage {
-    fn from_root(root: PathBuf) -> anyhow::Result<Self> {
+    fn from_root(root: PathBuf) -> anyhow::Result<Result<Self, (PathBuf, Vec<String>)>> {
         let path = root.join("package.json");
         let PackageJson {
             name,
@@ -67,13 +67,17 @@ impl NpmPackage {
             Workspaces::Node(packages) => packages,
             Workspaces::Bun { packages } => packages,
         };
-        Ok(Self {
-            path,
-            cfg: tagit,
-            name,
-            version,
-            root,
-            workspaces,
+        Ok(if let Some(version) = version {
+            Ok(Self {
+                path,
+                cfg: tagit,
+                name,
+                version,
+                root,
+                workspaces,
+            })
+        } else {
+            Err((path, workspaces))
         })
     }
 }
@@ -107,11 +111,16 @@ struct NpmWorkspace {
 
 impl NpmWorkspace {
     fn from_root(root: PathBuf) -> anyhow::Result<Self> {
-        let root_package = NpmPackage::from_root(root)?;
-        let mut packages = root_package
-            .workspaces
+        let (root_manifest, root_package, members) = match NpmPackage::from_root(root.clone())? {
+            Ok(mut root_package) => {
+                let members = std::mem::take(&mut root_package.workspaces);
+                (root_package.root.clone(), Some(root_package), members)
+            }
+            Err((root_manifest, members)) => (root_manifest, None, members),
+        };
+        let mut packages = members
             .iter()
-            .map(|glob| root_package.root.join(glob))
+            .map(|glob| root.join(glob))
             .map(|glob| {
                 Ok(glob
                     .as_os_str()
@@ -130,9 +139,11 @@ impl NpmWorkspace {
             .into_iter()
             .flatten()
             .map(NpmPackage::from_root)
-            .collect::<anyhow::Result<Vec<_>>>()?;
-        let root_manifest = root_package.path.clone();
-        packages.push(root_package);
+            .collect::<anyhow::Result<Vec<_>>>()?
+            .into_iter()
+            .filter_map(Result::ok)
+            .collect::<Vec<_>>();
+        packages.extend(root_package);
         Ok(Self {
             packages,
             root_manifest,
