@@ -10,6 +10,18 @@ use tagit_cfg::TagitCfg;
 use tagit_core::{Tagit, out};
 use tagit_workspace::{TagitPackage, TagitWorkspace, TagitWorkspaceProvider};
 
+#[derive(Deserialize, Default)]
+#[serde(untagged)]
+enum Workspaces {
+    #[default]
+    #[serde(skip)]
+    None,
+    Node(Vec<String>),
+    Bun {
+        packages: Vec<String>,
+    },
+}
+
 #[derive(Deserialize)]
 struct PackageJson {
     name: String,
@@ -17,7 +29,7 @@ struct PackageJson {
     #[serde(default)]
     tagit: TagitCfg,
     #[serde(default)]
-    workspaces: Vec<String>,
+    workspaces: Workspaces,
 }
 
 struct NpmPackage {
@@ -50,6 +62,11 @@ impl NpmPackage {
             tagit,
             workspaces,
         } = serde_json::from_reader(std::fs::File::open(&path)?)?;
+        let workspaces = match workspaces {
+            Workspaces::None => Vec::new(),
+            Workspaces::Node(packages) => packages,
+            Workspaces::Bun { packages } => packages,
+        };
         Ok(Self {
             path,
             cfg: tagit,

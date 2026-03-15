@@ -51,7 +51,7 @@ tagit-tag = { version = "0.3.8", path = "crates/tagit-tag" }
 tagit-workspace = { version = "0.2.3", path = "crates/tagit-workspace" }
 tagit-workspace-cargo = { version = "0.3.4", path = "crates/tagit-workspace-cargo" }
 tagit-workspace-changelog = { version = "0.1.6", path = "crates/tagit-workspace-changelog" }
-tagit-workspace-npm = { version = "0.1.4", path = "crates/tagit-workspace-npm" }
+tagit-workspace-npm = { version = "0.1.5", path = "crates/tagit-workspace-npm" }
 tagit-workspace-pyproject = { version = "0.1.3", path = "crates/tagit-workspace-pyproject" }
 
 anyhow = "1.0.100"
