@@ -114,7 +114,7 @@ impl NpmWorkspace {
         let (root_manifest, root_package, members) = match NpmPackage::from_root(root.clone())? {
             Ok(mut root_package) => {
                 let members = std::mem::take(&mut root_package.workspaces);
-                (root_package.root.clone(), Some(root_package), members)
+                (root_package.path.clone(), Some(root_package), members)
             }
             Err((root_manifest, members)) => (root_manifest, None, members),
         };

@@ -1,6 +1,6 @@
 [package]
 name = "tagit-workspace-npm"
-version = "0.1.6"
+version = "0.1.7"
 description = "tagit-workspace implementation for npm"
 authors.workspace = true
 edition.workspace = true

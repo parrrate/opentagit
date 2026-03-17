@@ -828,7 +828,7 @@ dependencies = [
 
 [[package]]
 name = "tagit"
-version = "0.1.70"
+version = "0.1.71"
 dependencies = [
  "anyhow",
  "clap",
@@ -1014,7 +1014,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace-npm"
-version = "0.1.6"
+version = "0.1.7"
 dependencies = [
  "anyhow",
  "glob",
