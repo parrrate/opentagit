@@ -909,7 +909,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-impl"
-version = "0.6.1"
+version = "0.6.0"
 dependencies = [
  "anyhow",
  "clap",
