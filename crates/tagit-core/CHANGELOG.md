@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- `default_sign`
+
 ## [0.3.4] — 2026-03-13
 
 ### Added

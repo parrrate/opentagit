@@ -76,7 +76,7 @@ fn sign_args(sign: bool) -> &'static [&'static str] {
     if sign { &["--sign"] } else { &[] }
 }
 
-fn default_sign() -> bool {
+pub fn default_sign() -> bool {
     std::env::var_os("CI").is_none()
 }
 
