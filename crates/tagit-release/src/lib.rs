@@ -28,6 +28,7 @@ pub fn release(
         }
         cmd.args(sign_args(sign.unwrap_or_else(default_sign)));
         cmd.status()?.okie()?;
+        Command::new("git").arg("push").status()?.okie()?;
     }
     tagit_tag::tag(
         tagit_package,
