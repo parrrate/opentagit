@@ -72,7 +72,7 @@ impl Iterator for VersionIterator {
     }
 }
 
-fn sign_args(sign: bool) -> &'static [&'static str] {
+pub fn sign_args(sign: bool) -> &'static [&'static str] {
     if sign { &["--sign"] } else { &[] }
 }
 
