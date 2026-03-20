@@ -23,6 +23,7 @@ clap.workspace = true
 default = ["changelog", "diff", "sub", "tag"]
 changelog = ["workspaces", "tagit-impl/changelog"]
 diff = ["workspaces", "tagit-impl/diff"]
+release = ["tagit-impl/release", "changelog", "tag"]
 sub = ["tagit-impl/sub"]
 tag = ["workspaces", "tagit-impl/tag"]
 workspaces = [

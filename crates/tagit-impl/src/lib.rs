@@ -38,6 +38,22 @@ pub fn run(
             }
             ChangelogCommand::Init => tagit_workspace_changelog::init_changelog(dry_run),
         },
+        #[cfg(feature = "release")]
+        Command::Release {
+            dry_run,
+            no_retag,
+            total_order,
+            sign,
+            message,
+        } => tagit_release::release(
+            tagit_package,
+            tagit_version,
+            dry_run,
+            no_retag,
+            total_order,
+            sign,
+            message.as_deref(),
+        ),
         #[cfg(feature = "diff")]
         Command::Diff { short } => tagit_diff::diff(short),
         Command::Completions => {
@@ -64,6 +80,8 @@ pub fn run(
         Command::Sub { .. } => anyhow::bail!("enable `sub` feature"),
         #[cfg(not(feature = "changelog"))]
         Command::Changelog { .. } => anyhow::bail!("enable `changelog` feature"),
+        #[cfg(not(feature = "release"))]
+        Command::Release { .. } => anyhow::bail!("enable `release` feature"),
         #[cfg(not(feature = "diff"))]
         Command::Diff { .. } => anyhow::bail!("enable `diff` feature"),
     }

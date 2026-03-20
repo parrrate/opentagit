@@ -1,6 +1,6 @@
 [package]
 name = "tagit-command"
-version = "0.5.0"
+version = "0.6.0"
 description = "CLI arguments for `tagit`"
 authors.workspace = true
 edition.workspace = true

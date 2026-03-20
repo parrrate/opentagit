@@ -37,9 +37,21 @@ pub enum Command {
         #[command(subcommand)]
         command: Option<ChangelogCommand>,
     },
+    Release {
+        #[arg(long)]
+        dry_run: bool,
+        #[arg(long)]
+        no_retag: bool,
+        #[arg(long)]
+        total_order: bool,
+        #[arg(long)]
+        sign: Option<bool>,
+        #[arg(long, short)]
+        message: Option<String>,
+    },
     /// List packages whose sources differ from the declared version
     Diff {
-        #[arg(short, long)]
+        #[arg(long, short)]
         short: bool,
     },
     /// Bash completions
