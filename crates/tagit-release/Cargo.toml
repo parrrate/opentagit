@@ -1,0 +1,16 @@
+[package]
+name = "tagit-release"
+version = "0.1.0"
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+tagit-core.workspace = true
+tagit-tag.workspace = true
+tagit-workspace-changelog.workspace = true
+
+anyhow.workspace = true

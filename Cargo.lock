@@ -933,6 +933,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "tagit-release"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "tagit-core",
+ "tagit-tag",
+ "tagit-workspace-changelog",
+]
+
+[[package]]
 name = "tagit-sub"
 version = "0.1.0"
 dependencies = [
