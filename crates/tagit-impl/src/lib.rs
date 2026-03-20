@@ -32,7 +32,10 @@ pub fn run(
         Command::Sub { command } => tagit_sub::sub(command.unwrap_or_default()),
         #[cfg(feature = "changelog")]
         Command::Changelog { dry_run, command } => match command.unwrap_or_default() {
-            ChangelogCommand::Bump => tagit_workspace_changelog::bump_changelog(dry_run),
+            ChangelogCommand::Bump => {
+                tagit_workspace_changelog::bump_changelog(dry_run)?;
+                Ok(())
+            }
             ChangelogCommand::Init => tagit_workspace_changelog::init_changelog(dry_run),
         },
         #[cfg(feature = "diff")]

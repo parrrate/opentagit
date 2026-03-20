@@ -1,6 +1,6 @@
 [package]
 name = "tagit-workspace-changelog"
-version = "0.1.6"
+version = "0.2.0"
 description = "`tagit changelog` implementation"
 authors.workspace = true
 edition.workspace = true

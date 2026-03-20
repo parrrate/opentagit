@@ -581,7 +581,7 @@ pub fn bump_one_changelog(
     package_root: impl AsRef<Path>,
     tag_prefix: &str,
     dry_run: bool,
-) -> anyhow::Result<()> {
+) -> anyhow::Result<Option<PathBuf>> {
     with_package(
         version,
         package_root,
@@ -596,14 +596,15 @@ pub fn bump_one_changelog(
                 options(),
             )?;
             if !dry_run && changelog != original {
-                std::fs::write(path, changelog).context("failed to write CHANGELOG.md")?;
+                std::fs::write(&path, changelog).context("failed to write CHANGELOG.md")?;
+                Ok(Some(path))
+            } else {
+                Ok(None)
             }
-            Ok(())
         },
-        || Ok(()),
+        || Ok(None),
         false,
-    )?;
-    Ok(())
+    )
 }
 
 fn default_changelog(version: Version, tag_prefix: &str) -> anyhow::Result<String> {
