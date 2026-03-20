@@ -20,7 +20,7 @@ anyhow.workspace = true
 clap.workspace = true
 
 [features]
-default = ["changelog", "diff", "sub", "tag"]
+default = ["changelog", "diff", "release", "sub", "tag"]
 changelog = ["workspaces", "tagit-impl/changelog"]
 diff = ["workspaces", "tagit-impl/diff"]
 release = ["tagit-impl/release", "changelog", "tag"]

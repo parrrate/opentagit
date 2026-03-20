@@ -13,12 +13,14 @@ pub fn release(
 ) -> anyhow::Result<()> {
     let bumped = tagit_workspace_changelog::bump_changelog(dry_run)?;
     if !dry_run {
-        Command::new("git")
-            .arg("add")
-            .arg("--")
-            .args(bumped)
-            .status()?
-            .okie()?;
+        if !bumped.is_empty() {
+            Command::new("git")
+                .arg("add")
+                .arg("--")
+                .args(bumped)
+                .status()?
+                .okie()?;
+        }
         let mut cmd = Command::new("git");
         cmd.arg("commit");
         if let Some(message) = message {
