@@ -19,7 +19,7 @@ pub fn release(
                 .arg("--")
                 .args(bumped)
                 .status()?
-                .okie()?;
+                .okie_with("failed to stage a changelog")?;
         }
         let mut cmd = Command::new("git");
         cmd.arg("commit");
@@ -27,8 +27,11 @@ pub fn release(
             cmd.args(["--message", message]);
         }
         cmd.args(sign_args(sign.unwrap_or_else(default_sign)));
-        cmd.status()?.okie()?;
-        Command::new("git").arg("push").status()?.okie()?;
+        cmd.status()?.okie_with("failed to commit")?;
+        Command::new("git")
+            .arg("push")
+            .status()?
+            .okie_with("failed to push changes")?;
     }
     tagit_tag::tag(
         tagit_package,

@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [0.3.8] — 2026-03-31
+
+### Added
+
+- `Okie::okie_with` usage for better error messages
+
 ## [0.3.7] — 2026-03-31
 
 ### Added
@@ -64,7 +70,8 @@
 
 (base version)
 
-[unreleased]: https://github.com/parrrate/opentagit/compare/tagit-core/0.3.7...HEAD
+[unreleased]: https://github.com/parrrate/opentagit/compare/tagit-core/0.3.8...HEAD
+[0.3.8]: https://github.com/parrrate/opentagit/compare/tagit-core/0.3.7...tagit-core/0.3.8
 [0.3.7]: https://github.com/parrrate/opentagit/compare/tagit-core/0.3.6...tagit-core/0.3.7
 [0.3.6]: https://github.com/parrrate/opentagit/compare/tagit-core/0.3.5...tagit-core/0.3.6
 [0.3.5]: https://github.com/parrrate/opentagit/compare/tagit-core/0.3.4...tagit-core/0.3.5

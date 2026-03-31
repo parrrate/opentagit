@@ -11,7 +11,7 @@ pub fn infer_url() -> anyhow::Result<Url> {
         .arg("get-url")
         .arg(remote)
         .output()?;
-    output.status.okie()?;
+    output.status.okie_with("failed to get remote url")?;
     let mut url =
         &*String::from_utf8(output.stdout)?.replace("git@github.com:", "ssh://git@github.com/");
     let https;

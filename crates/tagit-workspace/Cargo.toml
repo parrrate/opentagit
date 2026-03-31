@@ -1,6 +1,6 @@
 [package]
 name = "tagit-workspace"
-version = "0.2.3"
+version = "0.2.4"
 description = "workspace abstraction for tagit"
 authors.workspace = true
 edition.workspace = true

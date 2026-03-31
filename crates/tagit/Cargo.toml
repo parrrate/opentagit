@@ -1,6 +1,6 @@
 [package]
 name = "tagit"
-version = "0.1.72"
+version = "0.1.73"
 description = "Utilities for multi-package repositories"
 authors.workspace = true
 edition.workspace = true

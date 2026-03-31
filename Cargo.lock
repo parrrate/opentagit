@@ -828,7 +828,7 @@ dependencies = [
 
 [[package]]
 name = "tagit"
-version = "0.1.72"
+version = "0.1.73"
 dependencies = [
  "anyhow",
  "clap",
@@ -858,7 +858,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-changelog"
-version = "0.3.0"
+version = "0.3.1"
 dependencies = [
  "anyhow",
  "chrono",
@@ -888,7 +888,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-core"
-version = "0.3.7"
+version = "0.3.8"
 dependencies = [
  "anyhow",
  "owo-colors",
@@ -898,7 +898,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-diff"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "anyhow",
  "itertools 0.14.0",
@@ -909,7 +909,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-impl"
-version = "0.6.1"
+version = "0.6.2"
 dependencies = [
  "anyhow",
  "clap",
@@ -926,7 +926,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-infer-url"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "anyhow",
  "tagit-core",
@@ -935,7 +935,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-release"
-version = "0.1.2"
+version = "0.1.3"
 dependencies = [
  "anyhow",
  "tagit-core",
@@ -979,7 +979,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-tag"
-version = "0.3.8"
+version = "0.3.9"
 dependencies = [
  "anyhow",
  "tagit-changelog",
@@ -989,7 +989,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace"
-version = "0.2.3"
+version = "0.2.4"
 dependencies = [
  "anyhow",
  "inventory",
@@ -1002,7 +1002,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace-cargo"
-version = "0.3.4"
+version = "0.3.5"
 dependencies = [
  "anyhow",
  "cargo_metadata",
@@ -1016,7 +1016,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace-changelog"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "anyhow",
  "tagit-changelog",
@@ -1025,7 +1025,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace-npm"
-version = "0.1.7"
+version = "0.1.8"
 dependencies = [
  "anyhow",
  "glob",
@@ -1039,7 +1039,7 @@ dependencies = [
 
 [[package]]
 name = "tagit-workspace-pyproject"
-version = "0.1.3"
+version = "0.1.4"
 dependencies = [
  "anyhow",
  "pyproject-toml",

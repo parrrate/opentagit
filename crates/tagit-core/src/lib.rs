@@ -135,7 +135,7 @@ impl Tagit {
             .arg("tag")
             .arg(tag)
             .status()?
-            .okie()?;
+            .okie_with("failed to push the tag")?;
         Ok(())
     }
 
@@ -156,7 +156,7 @@ impl Tagit {
             .arg(tag)
             .args(target.as_slice())
             .status()?
-            .okie()?;
+            .okie_with("failed to create a tag")?;
         Ok(())
     }
 
@@ -306,7 +306,7 @@ impl Tagit {
                             .arg("tag")
                             .arg(tag)
                             .status()?
-                            .okie()?;
+                            .okie_with("failed to delete remote tag")?;
                     }
                     self.new_tag(msg, tag, Some(current_commit))?;
                     self.push_tag(tag)?;
@@ -332,7 +332,9 @@ impl Tagit {
             .arg("rev-parse")
             .arg("--show-toplevel")
             .output()?;
-        output.status.okie()?;
+        output
+            .status
+            .okie_with("failed to find workspace directory")?;
         Ok(String::from_utf8(output.stdout)?.trim().into())
     }
 
@@ -341,7 +343,7 @@ impl Tagit {
             .arg("branch")
             .arg("--show-current")
             .output()?;
-        output.status.okie()?;
+        output.status.okie_with("failed to get current branch")?;
         let stdout = String::from_utf8(output.stdout)?;
         let stdout = stdout.trim();
         if stdout.is_empty() {
@@ -356,7 +358,7 @@ impl Tagit {
             .arg("--abbrev-ref")
             .arg("@{upstream}")
             .output()?;
-        output.status.okie()?;
+        output.status.okie_with("failed to get upstream remote")?;
         let stdout = String::from_utf8(output.stdout)?;
         let (remote, _) = stdout
             .trim()
