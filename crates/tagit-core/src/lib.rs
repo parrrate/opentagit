@@ -1,5 +1,6 @@
 use std::{
     ffi::OsString,
+    fmt::Display,
     path::PathBuf,
     process::{Command, ExitStatus, Stdio},
 };
@@ -30,6 +31,7 @@ mod private {
 
 pub trait Okie: private::Sealed {
     fn okie(&self) -> anyhow::Result<()>;
+    fn okie_with(&self, msg: impl Display) -> anyhow::Result<()>;
 }
 
 impl private::Sealed for ExitStatus {}
@@ -38,6 +40,13 @@ impl Okie for ExitStatus {
     fn okie(&self) -> anyhow::Result<()> {
         if !self.success() {
             bail!("bwaaa");
+        }
+        Ok(())
+    }
+
+    fn okie_with(&self, msg: impl Display) -> anyhow::Result<()> {
+        if !self.success() {
+            bail!("{self}: {msg}");
         }
         Ok(())
     }
