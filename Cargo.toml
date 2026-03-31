@@ -40,7 +40,7 @@ tagit-cfg-cargo = { version = "0.3.0", path = "crates/tagit-cfg-cargo" }
 tagit-changelog = { version = "0.3.0", path = "crates/tagit-changelog" }
 tagit-changelog-command = { version = "0.1.1", path = "crates/tagit-changelog-command" }
 tagit-command = { version = "0.6.0", path = "crates/tagit-command" }
-tagit-core = { version = "0.3.5", path = "crates/tagit-core" }
+tagit-core = { version = "0.3.6", path = "crates/tagit-core" }
 tagit-diff = { version = "0.2.0", path = "crates/tagit-diff" }
 tagit-impl = { version = "0.6.1", path = "crates/tagit-impl" }
 tagit-infer-url = { version = "0.1.1", path = "crates/tagit-infer-url" }

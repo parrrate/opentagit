@@ -24,9 +24,15 @@ macro_rules! out {
     }};
 }
 
-pub trait Okie {
+mod private {
+    pub trait Sealed {}
+}
+
+pub trait Okie: private::Sealed {
     fn okie(&self) -> anyhow::Result<()>;
 }
+
+impl private::Sealed for ExitStatus {}
 
 impl Okie for ExitStatus {
     fn okie(&self) -> anyhow::Result<()> {
