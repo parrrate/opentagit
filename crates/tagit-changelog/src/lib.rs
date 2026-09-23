@@ -361,7 +361,10 @@ impl Document {
             .context("invalid url: no /releases/tag before /{version}")?;
         for def in definitions.iter().rev().skip(1) {
             let prefix = format!("{base_url}/compare/{tag_prefix}{tag}...");
-            tag = def.url.strip_prefix(&prefix).context("invalid url")?;
+            tag = def.url.strip_prefix(&prefix).context(format!(
+                "invalid url: {} doesn't start with {prefix}",
+                def.url,
+            ))?;
             let head = tag == "HEAD" || def.identifier == "unreleased";
             if !head {
                 tag = tag.strip_prefix(tag_prefix).context("missing tag prefix")?;
