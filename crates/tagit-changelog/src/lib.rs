@@ -494,7 +494,8 @@ fn with_package<T>(
     let changelog = std::fs::read_to_string(&path).context("failed to read CHANGELOG.md")?;
     let mut ast = to_mdast(&changelog, &ParseOptions::gfm()).map_err(|e| anyhow::anyhow!("{e}"))?;
     let children = ast.children_mut().context("no children nodes")?;
-    let document = Document::from_children(children, version, tag_prefix, always_rearrange)?;
+    let document = Document::from_children(children, version, tag_prefix, always_rearrange)
+        .context(format!("failed to make a document from {}", path.display()))?;
     f(children, document, path, changelog)
 }
 
