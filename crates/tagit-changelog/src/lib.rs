@@ -577,7 +577,9 @@ fn options() -> Options {
 }
 
 fn to_string(node: &Node, options: Options) -> anyhow::Result<String> {
-    to_markdown_with_options(node, &options).map_err(|e| anyhow::anyhow!("{e}"))
+    to_markdown_with_options(node, &options)
+        .map(|x| x.replace("> \\[!", "> [!"))
+        .map_err(|e| anyhow::anyhow!("{e}"))
 }
 
 pub fn bump_one_changelog(
